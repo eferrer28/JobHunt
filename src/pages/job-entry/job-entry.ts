@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 /**
  * Generated class for the JobEntryPage page.
  *

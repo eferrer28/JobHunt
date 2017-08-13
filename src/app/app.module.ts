@@ -7,8 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 
-
-
+import { ReactiveFormsModule } from '@angular/forms'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -21,6 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
