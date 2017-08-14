@@ -13,9 +13,19 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   selector: 'page-job-entry',
   templateUrl: 'job-entry.html',
 })
+
 export class JobEntryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user: FormGroup;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+            private fb: FormBuilder ) {
+
+    this.user = this.fb.group({
+      company: ['assholes'],
+      position: ['stripper'],
+      date: ['']
+    });
   }
 
   ionViewDidLoad() {

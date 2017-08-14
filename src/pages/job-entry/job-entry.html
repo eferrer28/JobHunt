@@ -1,3 +1,4 @@
+
 <!--
   Generated template for the JobEntryPage page.
 
@@ -7,6 +8,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>jobEntry</ion-title>
   </ion-navbar>
 
@@ -14,5 +18,20 @@
 
 
 <ion-content padding>
-
+  <form [formGroup]="user" (ngSubmit)="formSubmit(user)">
+<ion-list>
+  <ion-item>
+    <ion-label stacked>Company Name</ion-label>
+    <ion-input type="text" formControlName="company"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Position Applied For</ion-label>
+    <ion-input type="text" formControlName="position"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Date Applied</ion-label>
+    <ion-input type="date" formControlName="position"></ion-input>
+  </ion-item>
+</ion-list>
+</form>
 </ion-content>
