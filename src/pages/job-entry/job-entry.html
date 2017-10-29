@@ -18,7 +18,8 @@
 
 
 <ion-content padding>
-  <form [formGroup]="user" (ngSubmit)="formSubmit(user)">
+  <!--user is the name of our formgroup that we set up on the ts file -->
+  <form [formGroup]="user" (ngSubmit)="entryOne(user.value)">
 <ion-list>
   <ion-item>
     <ion-label stacked>Company Name</ion-label>
@@ -32,6 +33,18 @@
     <ion-label stacked>Date Applied</ion-label>
     <ion-datetime formControlName="date" min="2017" displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY"></ion-datetime>
   </ion-item>
+  <ion-item>
+      <ion-label>Pepperoni</ion-label>
+      <ion-checkbox [(ngModel)]="Selected For Interview?"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Sausage</ion-label>
+      <ion-checkbox [(ngModel)]="rejected"></ion-checkbox>
+    </ion-item>
+
 </ion-list>
+
+<button ion-button type="submit">Submit</button>
 </form>
 </ion-content>
