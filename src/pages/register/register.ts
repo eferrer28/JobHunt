@@ -1,6 +1,9 @@
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 /**
@@ -17,6 +20,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class RegisterPage {
 
+  data: any;
+  email: string = '';
+  password: string = '';
+  passwordRetyped: '';
+  signupForm: FormGroup;
+  loading: Loading;
+
 
   signupData = {
     email: '',
@@ -25,7 +35,18 @@ export class RegisterPage {
   };
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
-    private alertCtrl: AlertController, private afAuth: AngularFireAuth) {
+    private alertCtrl: AlertController, private afAuth: AngularFireAuth,
+    private fb: FormBuilder, private FirebaseProvider: FirebaseProvider,
+    private loadingCtrl: LoadingController) {
+
+    this.signupForm = fb.group({
+      email: '',
+      password: '',
+      passwordRetyped: ''
+    });
+
+    
+
     this.signupData.email = this.navParams.get('email');
   }
 
@@ -33,8 +54,8 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
  
-  signup() {
-    if(this.signupData.password !== this.signupData.passwordRetyped) {
+  signup(data) {
+    if(data.password !== data.passwordRetyped) {
       let alert = this.alertCtrl.create({
         title: 'Error',
         message: 'Your password and your re-entered password does not match each other.',
@@ -44,7 +65,7 @@ export class RegisterPage {
       return;
     }
     // Firebase Signup Code
-    this.afAuth.auth.createUserWithEmailAndPassword(this.signupData.email, this.signupData.password)
+    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
     .then(auth => {
       // Could do something with the Auth-Response
       console.log(auth);

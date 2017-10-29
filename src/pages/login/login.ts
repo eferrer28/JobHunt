@@ -40,6 +40,6 @@ export class LoginPage {
   }
  
   signup() {
-    this.navCtrl.push(LoginPage, { email: this.loginData.email });
+    this.navCtrl.push(RegisterPage, { email: this.loginData.email });
   }
 }
