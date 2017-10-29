@@ -6,6 +6,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
+import { LoginPage } from '../pages/login/login';
+import { RegisterPage } from '../pages/register/register';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 
 @Component({
@@ -18,7 +23,18 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+                private afAuth: AngularFireAuth) {
+
+    //from tutorial https://aaronczichon.de/2017/03/07/ionic-firebase-authentication/
+    this.afAuth.authState.subscribe(auth => {
+      if(!auth)
+        this.rootPage = LoginPage;
+      else
+        this.rootPage = HomePage;
+    });
+    
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
