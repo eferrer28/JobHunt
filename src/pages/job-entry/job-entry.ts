@@ -27,6 +27,9 @@ export class JobEntryPage {
     this.user = this.fb.group({
       company: [null],
       position: [null],
+      pending: [null],
+      selected: [null],
+      rejected: [null],
       date: ['']
     });
   }
