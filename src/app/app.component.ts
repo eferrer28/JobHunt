@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { LogoutPage } from '../pages/logout/logout';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -19,7 +20,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
@@ -41,8 +42,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Job Entry', component: JobEntryPage }
-
+      { title: 'Job Entry', component: JobEntryPage },
+      { title: 'Logout', component: LogoutPage}
     ];
 
   }

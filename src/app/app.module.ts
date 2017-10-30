@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+import { LogoutPage } from './../pages/logout/logout';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HttpModule } from '@angular/http';
@@ -38,7 +39,9 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     ListPage,
     JobEntryPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    LogoutPage
+
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     ListPage,
     JobEntryPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    LogoutPage
 
   ],
   providers: [
