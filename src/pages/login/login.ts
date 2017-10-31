@@ -2,6 +2,7 @@ import { RegisterPage } from './../register/register';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,16 +17,28 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  loginData = {
-    email: '',
-    password: ''
-  }
+  data: any;
+  loginForm: FormGroup;
+  email: string = '';
+  password: string = '';
+
+
+
   constructor(public navCtrl: NavController, private afAuth: AngularFireAuth,
-            private toastCtrl: ToastController) { }
+            private toastCtrl: ToastController, private fb: FormBuilder) { 
+
+              this.loginForm = fb.group({
+                email: '',
+                password: '',
+                
+              });  
+            }
  
-  login() {
+
+
+  login(data) {
     // Login Code here
-    this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)
+    this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
     .then(auth => {
       // Do custom things with auth
     })
@@ -40,6 +53,6 @@ export class LoginPage {
   }
  
   signup() {
-    this.navCtrl.push(RegisterPage, { email: this.loginData.email });
+    this.navCtrl.push(RegisterPage);
   }
 }

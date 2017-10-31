@@ -4,13 +4,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { LogoutPage } from './../pages/logout/logout';
+import { ProfilePage } from './../pages/profile/profile';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpModule } from '@angular/http';
 
 
@@ -20,6 +22,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { ProfileProvider } from '../providers/profile/profile';
 
   // Initialize Firebase
   var config = {
@@ -36,11 +39,11 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    LogoutPage
+    LogoutPage,
+    ProfilePage
 
   ],
   imports: [
@@ -49,17 +52,18 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    LogoutPage
+    LogoutPage,
+    ProfilePage
 
   ],
   providers: [
@@ -67,7 +71,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
-    FirebaseProvider
+    FirebaseProvider,
+    ProfileProvider
   ]
 })
 export class AppModule {}

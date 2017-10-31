@@ -6,16 +6,19 @@
   </ion-header>
    
   <ion-content padding>
+      <form [formGroup]="loginForm" (submit)="login(loginForm.value)">
+          
     <ion-list>
       <ion-item>
         <ion-label floating>E-Mail</ion-label>
-        <ion-input type="email" [(ngModel)]="loginData.email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="loginData.password"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
     </ion-list>
-    <button full ion-button (click)="login()" [disabled]="!loginData.email || !loginData.password">Login</button>
+    <button full ion-button>Login</button>
     <a href="#" (click)="signup()">Signup for an Account</a>
+ </form>
   </ion-content>
