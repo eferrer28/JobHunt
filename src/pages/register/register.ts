@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import firebase from 'firebase';
 
 /**
  * Generated class for the RegisterPage page.
@@ -69,6 +69,7 @@ export class RegisterPage {
     .then(auth => {
       // Could do something with the Auth-Response
       console.log(auth);
+      firebase.database().ref(`/userProfile/${auth.uid}/email`).set(data.email);
     })
     .catch(err => {
       // Handle error

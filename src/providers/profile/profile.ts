@@ -31,5 +31,18 @@ public currentUser:firebase.User;
 
   }
 
+
+  getUserProfile(): firebase.database.Reference{
+    return this.userProfile;
+  }
+
+  updateName(firstName: string, lastName: string): Promise<any> {
+    return this.userProfile.update({firstName, lastName });
+  }
+
+  updateDOB(birthDate:string): Promise<any> {
+    return this.userProfile.update({ birthDate });
+  }
+
 }
 
