@@ -19,7 +19,7 @@
 
 <ion-content padding>
   <!--user is the name of our formgroup that we set up on the ts file -->
-  <form [formGroup]="user" (ngSubmit)="entryOne(user.value)">
+  <form [formGroup]="user" (ngSubmit)="newEntry(user.value)">
 <ion-list>
   <ion-item>
     <ion-label stacked>Company Name</ion-label>
@@ -35,7 +35,7 @@
   </ion-item>
   <ion-item>
       <ion-label>Pending</ion-label>
-      <ion-checkbox formControlName="pending"></ion-checkbox>
+      <ion-checkbox checked="pending" formControlName="pending"></ion-checkbox>
     </ion-item>
   <ion-item>
       <ion-label>Selected For Interview</ion-label>

@@ -15,7 +15,8 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class ProfileProvider{
-
+//firebase.database().ref(`/userProfile/${auth.uid}/email`).set(data.email);
+  
 public userProfile:firebase.database.Reference; 
 public currentUser:firebase.User;
 

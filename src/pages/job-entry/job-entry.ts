@@ -1,3 +1,5 @@
+import { HomePage } from './../home/home';
+import { CreateEntryProvider } from './../../providers/create-entry/create-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
@@ -20,9 +22,12 @@ export class JobEntryPage {
   user: FormGroup;
   company:string = '';
   position:string = '';
+  //pending: boolean = true;
+  status: string = '';
+  pending: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-            private fb: FormBuilder ) {
+            private fb: FormBuilder, public entryProvider: CreateEntryProvider  ) {
 
     this.user = this.fb.group({
       company: [null],
@@ -39,10 +44,32 @@ export class JobEntryPage {
     this.position = post.position
     console.log(post.company);
     console.log(post.position);
+    console.log(post.date);
+    console.log(post.pending);
+    console.log(this.pending);
   }
+
+  newEntry(post): void{
+    /*
+    if(post.pending == true){
+      console.log("correct");
+      //this.status = pending 
+      
+
+    }*/
+
+    this.entryProvider.createEntry(post.company, post.position, post.date, "pending").then(
+      newEvent => {
+        //this.navCtrl.pop();
+        this.navCtrl.setRoot(HomePage);
+
+      });
+    }
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JobEntryPage');
   }
 
 }
+

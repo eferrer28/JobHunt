@@ -23,6 +23,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { ProfileProvider } from '../providers/profile/profile';
+import { CreateEntryProvider } from '../providers/create-entry/create-entry';
 
   // Initialize Firebase
   var config = {
@@ -72,7 +73,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
     FirebaseProvider,
-    ProfileProvider
+    ProfileProvider,
+    CreateEntryProvider
   ]
 })
 export class AppModule {}
