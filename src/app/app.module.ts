@@ -20,7 +20,6 @@ import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { ProfileProvider } from '../providers/profile/profile';
 import { CreateEntryProvider } from '../providers/create-entry/create-entry';
@@ -71,7 +70,6 @@ import { CreateEntryProvider } from '../providers/create-entry/create-entry';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider,
     FirebaseProvider,
     ProfileProvider,
     CreateEntryProvider

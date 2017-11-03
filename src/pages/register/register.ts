@@ -28,11 +28,7 @@ export class RegisterPage {
   loading: Loading;
 
 
-  signupData = {
-    email: '',
-    password: '',
-    passwordRetyped: ''
-  };
+
 
   constructor(private navCtrl: NavController, private navParams: NavParams, 
     private alertCtrl: AlertController, private afAuth: AngularFireAuth,
@@ -47,7 +43,6 @@ export class RegisterPage {
 
     
 
-    this.signupData.email = this.navParams.get('email');
   }
 
   ionViewDidLoad() {
@@ -64,6 +59,8 @@ export class RegisterPage {
       alert.present();
       return;
     }
+    
+    /*
     // Firebase Signup Code
     this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
     .then(auth => {
@@ -71,6 +68,9 @@ export class RegisterPage {
       console.log(auth);
       firebase.database().ref(`/userProfile/${auth.uid}/email`).set(data.email);
     })
+    */
+    this.FirebaseProvider.register(data.email, data.password)
+
     .catch(err => {
       // Handle error
       let alert = this.alertCtrl.create({

@@ -16,7 +16,7 @@ import 'rxjs/add/operator/map';
 export class CreateEntryProvider {
 
   public entryRef: firebase.database.Reference;
-  constructor(public http: Http) {
+  constructor(public http: Http, private afd: AngularFireDatabase) {
     console.log('Hello CreateEntryProvider Provider');
     firebase.auth().onAuthStateChanged( user => {
       if(user){

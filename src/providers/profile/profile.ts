@@ -20,7 +20,7 @@ export class ProfileProvider{
 public userProfile:firebase.database.Reference; 
 public currentUser:firebase.User;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private afd: AngularFireDatabase) {
     console.log('Hello ProfileProvider Provider');
     firebase.auth().onAuthStateChanged( user => {
       if(user){
@@ -32,11 +32,14 @@ public currentUser:firebase.User;
 
   }
 
+  
 
   getUserProfile(): firebase.database.Reference{
     return this.userProfile;
+    //return this.afd.object('/userProfile/' + this.user.uid);
+    
   }
-
+  /*
   updateName(firstName: string, lastName: string): Promise<any> {
     return this.userProfile.update({firstName, lastName });
   }
@@ -44,6 +47,11 @@ public currentUser:firebase.User;
   updateDOB(birthDate:string): Promise<any> {
     return this.userProfile.update({ birthDate });
   }
+  */
+  
+
+  
 
 }
+
 

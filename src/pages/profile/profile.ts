@@ -1,7 +1,8 @@
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { ProfileProvider } from './../../providers/profile/profile';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /**
  * Generated class for the ProfilePage page.
@@ -19,18 +20,63 @@ export class ProfilePage {
 
   public userProfile; any;
   public birthDate: string;
+  nameForm: FormGroup;
+  name: string;
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public profileProvider: ProfileProvider, public alertCtrl: AlertController) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
+    public profileProvider: ProfileProvider, public alertCtrl: AlertController, public fb: FirebaseProvider) {
+    this.nameForm = formBuilder.group({
+    name: ['', null]
+    });
+
   }
 
   ionViewDidLoad() {
+    this.fb.authState.subscribe(user => {
+      if (user) {
+        this.fb.getUserProfile().subscribe(data => {
+          let value = data.firstName;
+          this.nameForm.patchValue({name: value});
+        }, err => {
+          console.log('some err: ', err);
+        });
+      }
+    })
+  }
+
+/*
+  ionViewDidEnter() {
+    /*
+    this.fb.authState.subscribe(user => {
+      if (user) {
+        this.fb.getUserProfile()
+      }
+    });
+    
+  
     console.log('ionViewDidLoad ProfilePage');
     this.profileProvider.getUserProfile().on("value", userProfileSnapshot => {
       this.userProfile = userProfileSnapshot.val();
       this.birthDate = userProfileSnapshot.val().birthDate;
     });
+    
+    
+      this.fb.authState.subscribe(user => {
+        if (user) {
+          this.fb.getUserProfile().subscribe(data => {
+            let value = data.name;
+          }, err => {
+            console.log('some err: ', err);
+          });
+        }
+      })
+   
+  
+
   }
+  
 
   updateName(): void {
     const alert: Alert = this.alertCtrl.create({
@@ -59,5 +105,5 @@ export class ProfilePage {
     });
     alert.present();
   }
-
+  */
 }
