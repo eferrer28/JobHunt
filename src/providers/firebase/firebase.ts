@@ -56,8 +56,8 @@ export class FirebaseProvider {
     
   }
 
-  updateUserName(newName) {
-    return this.afd.object('/userProfile/' + this.user.uid).update({name: newName});
+  updateDetails(first, second) {
+    return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
   }
 
 

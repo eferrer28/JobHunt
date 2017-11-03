@@ -22,13 +22,16 @@ export class ProfilePage {
   public birthDate: string;
   nameForm: FormGroup;
   name: string;
+  post: any;
+  
   
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
     public profileProvider: ProfileProvider, public alertCtrl: AlertController, public fb: FirebaseProvider) {
     this.nameForm = formBuilder.group({
-    name: ['', null]
+    fname: ['', null],
+    lname: ['', null]
     });
 
   }
@@ -38,7 +41,12 @@ export class ProfilePage {
       if (user) {
         this.fb.getUserProfile().subscribe(data => {
           let value = data.firstName;
-          this.nameForm.patchValue({name: value});
+          let value1 = data.lastName; 
+          let value2 = data.dob;
+          this.nameForm.patchValue({fname: value});
+          this.nameForm.patchValue({lname: value1});
+          
+          
         }, err => {
           console.log('some err: ', err);
         });
@@ -46,37 +54,15 @@ export class ProfilePage {
     })
   }
 
-/*
-  ionViewDidEnter() {
-    /*
-    this.fb.authState.subscribe(user => {
-      if (user) {
-        this.fb.getUserProfile()
-      }
-    });
-    
-  
-    console.log('ionViewDidLoad ProfilePage');
-    this.profileProvider.getUserProfile().on("value", userProfileSnapshot => {
-      this.userProfile = userProfileSnapshot.val();
-      this.birthDate = userProfileSnapshot.val().birthDate;
-    });
-    
-    
-      this.fb.authState.subscribe(user => {
-        if (user) {
-          this.fb.getUserProfile().subscribe(data => {
-            let value = data.name;
-          }, err => {
-            console.log('some err: ', err);
-          });
-        }
-      })
-   
-  
 
-  }
-  
+ updateUser(post){
+   console.log(post.fname);
+   console.log(post.lname);
+   this.fb.updateDetails(post.fname, post.lname);
+ }
+
+
+  /*
 
   updateName(): void {
     const alert: Alert = this.alertCtrl.create({
