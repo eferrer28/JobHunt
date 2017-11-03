@@ -1,3 +1,4 @@
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { HomePage } from './../home/home';
 import { CreateEntryProvider } from './../../providers/create-entry/create-entry';
 import { Component } from '@angular/core';
@@ -27,8 +28,8 @@ export class JobEntryPage {
   pending: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-            private fb: FormBuilder, public entryProvider: CreateEntryProvider  ) {
-
+            private fb: FormBuilder, public entryProvider: CreateEntryProvider,
+            public firebaseProvider: FirebaseProvider  ) {
     this.user = this.fb.group({
       company: [null],
       position: [null],
@@ -58,7 +59,9 @@ export class JobEntryPage {
 
     }*/
 
-    this.entryProvider.createEntry(post.company, post.position, post.date, "pending").then(
+    //this.entryProvider.createEntry(post.company, post.position, post.date, "pending").then(
+      this.firebaseProvider.createNewEntry(post.company, post.position, post.date, "pending").then(
+        
       newEvent => {
         //this.navCtrl.pop();
         this.navCtrl.setRoot(HomePage);

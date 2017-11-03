@@ -1,5 +1,4 @@
 import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { ProfileProvider } from './../../providers/profile/profile';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -28,7 +27,7 @@ export class ProfilePage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-    public profileProvider: ProfileProvider, public alertCtrl: AlertController, public fb: FirebaseProvider) {
+    public alertCtrl: AlertController, public fb: FirebaseProvider) {
     this.nameForm = formBuilder.group({
     fname: ['', null],
     lname: ['', null]

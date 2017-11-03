@@ -21,7 +21,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
-import { ProfileProvider } from '../providers/profile/profile';
 import { CreateEntryProvider } from '../providers/create-entry/create-entry';
 
   // Initialize Firebase
@@ -71,7 +70,6 @@ import { CreateEntryProvider } from '../providers/create-entry/create-entry';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    ProfileProvider,
     CreateEntryProvider
   ]
 })

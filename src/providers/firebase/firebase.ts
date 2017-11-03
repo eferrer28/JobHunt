@@ -33,8 +33,14 @@ export class FirebaseProvider {
     return this.afAuth.auth.signOut();
   }
 
-  createNewEntry(){
-    return this.afd.list('/applications').push({name: name});
+  createNewEntry(companyEntry, positionEntry, dateEntry, statusEntry){
+    return this.afd.list('/userProfile/' + this.user.uid).push({
+      company: companyEntry,
+      position: positionEntry,
+      date: dateEntry,
+      status: statusEntry
+
+    });
   }
 
   getEntries(){
@@ -59,6 +65,8 @@ export class FirebaseProvider {
   updateDetails(first, second) {
     return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
   }
+
+ 
 
 
 
