@@ -9,6 +9,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'derp',
 })
+
+//https://stackoverflow.com/questions/43773676/how-to-do-ngfor-loop-on-nested-json-object
+// Code taken from the above link
+// This lets us interate the nested loop. Convenient when having multipe objects in an array.
+
 export class DerpPipe implements PipeTransform {
   /**
    * Takes a value and makes it lowercase.
