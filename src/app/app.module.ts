@@ -23,6 +23,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { CreateEntryProvider } from '../providers/create-entry/create-entry';
 
+import { DerpPipe } from './/../pipes/derp/derp'
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyClS1FWGGzpydAj3ApjiKhB7_YiyeSA7kM",
@@ -42,7 +44,8 @@ import { CreateEntryProvider } from '../providers/create-entry/create-entry';
     LoginPage,
     RegisterPage,
     LogoutPage,
-    ProfilePage
+    ProfilePage,
+    DerpPipe
 
   ],
   imports: [

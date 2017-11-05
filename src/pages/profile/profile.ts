@@ -39,7 +39,7 @@ export class ProfilePage {
     this.fb.authState.subscribe(user => {
       if (user) {
         this.fb.getUserProfile().subscribe(data => {
-          let value = data.firstName;
+          let value = data.company;
           let value1 = data.lastName; 
           let value2 = data.dob;
           this.nameForm.patchValue({fname: value});
