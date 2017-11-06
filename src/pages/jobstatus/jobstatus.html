@@ -13,6 +13,94 @@
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content padding>
+  <!--user is the name of our formgroup that we set up on the ts file -->
+  <form [formGroup]="jobstatusForm" (ngSubmit)="newEntry(user.value)">
+<ion-list>
+  <ion-item>
+    <ion-label stacked>Company Name</ion-label>
+    <ion-input  type="text" formControlName="company" placeholder="fuck"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Position Applied For</ion-label>
+    <ion-input disabled="true"type="text" formControlName="position"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Date Applied</ion-label>
+    <ion-datetime disabled="true" formControlName="date" min="2017" displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY"></ion-datetime>
+  </ion-item>
+
+
+</ion-list>
+
+<ion-title>Application Status</ion-title>
+
+
+<ion-list>
+<ion-item>
+    <ion-label>Pending</ion-label>
+    <ion-checkbox formControlName="pending" [(ngModel)]="isChecked" (ionChange)="update()"></ion-checkbox>
+    
+  </ion-item>
+  <ion-item>
+      <ion-label>Selected for Interview</ion-label>
+      <ion-checkbox formControlName="selected"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Rejected</ion-label>
+        <ion-checkbox formControlName="rejected"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Ghosted</ion-label>
+          <ion-checkbox formControlName="ghosted"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+
+    <ion-title>Interview Details</ion-title>
+    
+
+        <ion-list *ngIf="isChecked">
+
+        <ion-item >
+            <ion-label>Type of Interview</ion-label>
+            <ion-select formControlName="interviewType">
+              <ion-option value="f">Phone Screen</ion-option>
+              <ion-option value="m">Phone Interview</ion-option>
+              <ion-option value="m">Technical Challenge</ion-option>
+              <ion-option value="m">On Site Interview</ion-option>
+              
+              
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+              <ion-label stacked>Date</ion-label>
+             <ion-datetime displayFormat="MM/DD/YYYY" formControlName="interviewDate"></ion-datetime>
+          </ion-item>
+
+          <ion-item>
+         <ion-label stacked>Stage</ion-label>
+        <ion-input type="number" formControlName="stage"></ion-input>
+     </ion-item>
+
+     <ion-item>
+        <ion-label stacked>Stage</ion-label>
+       <ion-textarea placeholder="Jay Whang Sucks" formControlName="stage"></ion-textarea>
+    </ion-item>
+
+
+  </ion-list>
+
+        
+<button ion-button type="submit">Submit</button>
+</form>
+
+
+<ion-item *ngIf="isChecked">MEH MEH </ion-item>
 </ion-content>
+
+

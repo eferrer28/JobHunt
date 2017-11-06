@@ -14,7 +14,7 @@
         <ion-title>Company Name</ion-title>
         
       <ion-list *ngFor="let item of entries | derp">
-      <ion-item>{{item.key}}</ion-item>
+      <ion-item>{{item.value.company}}</ion-item>
       
     </ion-list>
     </ion-col>
@@ -29,7 +29,7 @@
           </ion-item>
           </ion-list>
             
-      </ion-col>>
+      </ion-col>
     
 </ion-row>
 
