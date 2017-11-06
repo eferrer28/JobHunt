@@ -20,6 +20,7 @@ export class DerpPipe implements PipeTransform {
    */
   transform(value: any, args?: any[]): any[] {
     // check if "routes" exists
+    /*
     if(value) {
       // create instance vars to store keys and final output
       let keyArr: any[] = Object.keys(value),
@@ -35,5 +36,14 @@ export class DerpPipe implements PipeTransform {
       console.log(dataArr);
       return dataArr;
     }
+    */
+
+    //code taken from here https://stackoverflow.com/questions/35534959/access-key-and-value-of-object-using-ngfor
+    //used this over the above code as it gives me the keys as well
+    let keys = [];
+    for (let key in value) {
+      keys.push({key: key, value: value[key]});
+    }
+    return keys;
   }
 }
