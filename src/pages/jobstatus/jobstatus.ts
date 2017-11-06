@@ -1,8 +1,10 @@
+import { GhostedModalPage } from './../ghosted-modal/ghosted-modal';
+import { RejectionModalPage } from './../rejection-modal/rejection-modal';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-/**
+  /**
  * Generated class for the JobstatusPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
@@ -23,7 +25,7 @@ export class JobstatusPage {
   isChecked = false;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-  public FirebaseProvider: FirebaseProvider) {
+  public FirebaseProvider: FirebaseProvider, public modalCtrl: ModalController) {
     this.jobstatusForm = formBuilder.group({
       company: ['', null],
       position: ['', null],
@@ -63,5 +65,16 @@ export class JobstatusPage {
 
   update(){
     console.log('new state:' + this.isChecked)
+  }
+
+  
+
+  rejected(){
+    let rejectionModal = this.modalCtrl.create(RejectionModalPage);
+    rejectionModal.present();
+  }
+
+  ghosted(){
+
   }
 }

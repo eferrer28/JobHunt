@@ -40,27 +40,27 @@
 <ion-list>
 <ion-item>
     <ion-label>Pending</ion-label>
-    <ion-checkbox formControlName="pending" [(ngModel)]="isChecked" (ionChange)="update()"></ion-checkbox>
+    <ion-checkbox formControlName="pending" ></ion-checkbox>
     
   </ion-item>
   <ion-item>
       <ion-label>Selected for Interview</ion-label>
-      <ion-checkbox formControlName="selected"></ion-checkbox>
+      <ion-checkbox formControlName="selected" [(ngModel)]="isChecked" (ionChange)="update()"></ion-checkbox>
     </ion-item>
 
     <ion-item>
         <ion-label>Rejected</ion-label>
-        <ion-checkbox formControlName="rejected"></ion-checkbox>
+        <ion-checkbox formControlName="rejected" (ionChange)="rejected()"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label>Ghosted</ion-label>
-          <ion-checkbox formControlName="ghosted"></ion-checkbox>
+          <ion-checkbox formControlName="ghosted" (ionChange)="ghosted()"></ion-checkbox>
         </ion-item>
     </ion-list>
 
 
-    <ion-title>Interview Details</ion-title>
+    <ion-title *ngIf="isChecked">Interview Details</ion-title>
     
 
         <ion-list *ngIf="isChecked">

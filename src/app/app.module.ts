@@ -10,6 +10,8 @@ import { RegisterPage } from '../pages/register/register';
 import { LogoutPage } from './../pages/logout/logout';
 import { ProfilePage } from './../pages/profile/profile';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
+import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
+import { RejectionModalPage } from './../pages/rejection-modal/rejection-modal';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -47,7 +49,9 @@ import { DerpPipe } from './/../pipes/derp/derp'
     LogoutPage,
     ProfilePage,
     JobstatusPage,
-    DerpPipe
+    DerpPipe,
+    GhostedModalPage,
+    RejectionModalPage
 
   ],
   imports: [
@@ -68,7 +72,9 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RegisterPage,
     LogoutPage,
     ProfilePage,
-    JobstatusPage
+    JobstatusPage,
+    GhostedModalPage,
+    RejectionModalPage
 
   ],
   providers: [
