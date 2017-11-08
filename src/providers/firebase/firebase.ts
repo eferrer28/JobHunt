@@ -66,9 +66,23 @@ export class FirebaseProvider {
     return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
   }
 
+  testing(first){
+    return this.afd.object('/userProfile/' + this.user.uid + '/' + first).update({company: first} );
+    
+  }
+
+  updateRejection(rejectionDate, rejectionNotes, key){
+    return this.afd.object('/userProfile/' + this.user.uid + '/' + key).update({dateRejected: rejectionDate, 
+    notes: rejectionNotes} );
+    
+  } 
  
-
-
+  addInterview(key, type, date, stage, notes){
+    return this.afd.list('/userProfile/' + this.user.uid + '/' + key).push({round: stage, 
+      interviewType: type, interviewDate: date, interviewNotes: notes} );
+  }
+  
+ 
 
   
 

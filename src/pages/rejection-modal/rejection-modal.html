@@ -14,5 +14,20 @@
 
 
 <ion-content padding>
- HELLO!
+  <form [formGroup]="rejectionForm" (ngSubmit)="updateRejection(rejectionForm.value)">
+    <ion-list>
+      <ion-item>
+        <ion-label stacked>Date</ion-label>
+       <ion-datetime displayFormat="MM/DD/YYYY" formControlName="dateRejected"></ion-datetime>
+    </ion-item>
+      <ion-item>
+        <ion-label stacked>Interview Details</ion-label>
+       <ion-textarea placeholder="Interview Notes Go here or whatever else" formControlName="notes"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit">Submit</button>
+    
+
+
+  </ion-list>
+  </form>
 </ion-content>

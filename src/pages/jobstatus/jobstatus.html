@@ -16,7 +16,7 @@
 
 <ion-content padding>
   <!--user is the name of our formgroup that we set up on the ts file -->
-  <form [formGroup]="jobstatusForm" (ngSubmit)="newEntry(user.value)">
+  <form [formGroup]="jobstatusForm" (ngSubmit)="updateInterview(jobstatusForm.value)">
 <ion-list>
   <ion-item>
     <ion-label stacked>Company Name</ion-label>
@@ -40,7 +40,7 @@
 <ion-list>
 <ion-item>
     <ion-label>Pending</ion-label>
-    <ion-checkbox formControlName="pending" ></ion-checkbox>
+    <ion-checkbox formControlName="pending" (ionChange)="testing()"></ion-checkbox>
     
   </ion-item>
   <ion-item>
@@ -88,8 +88,8 @@
      </ion-item>
 
      <ion-item>
-        <ion-label stacked>Stage</ion-label>
-       <ion-textarea placeholder="Jay Whang Sucks" formControlName="stage"></ion-textarea>
+        <ion-label stacked>Interview Notes</ion-label>
+       <ion-textarea placeholder="Enter interview notes here" formControlName="notes"></ion-textarea>
     </ion-item>
 
 

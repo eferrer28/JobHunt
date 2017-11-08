@@ -2,6 +2,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireDatabase,  FirebaseObjectObservable} from 'angularfire2/database';
 
 /**
  * Generated class for the ProfilePage page.
@@ -23,16 +24,19 @@ export class ProfilePage {
   name: string;
   post: any;
   
+  item: FirebaseObjectObservable<any>;
   
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-    public alertCtrl: AlertController, public fb: FirebaseProvider) {
+    public alertCtrl: AlertController, public fb: FirebaseProvider, public afd: AngularFireDatabase) {
     this.nameForm = formBuilder.group({
     fname: ['', null],
     lname: ['', null]
     });
 
+    this.item = this.afd.object('/userProfile/');
+    console.log("HELLO! " + this.item);
   }
 
   ionViewDidLoad() {

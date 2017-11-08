@@ -4,6 +4,8 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AngularFireDatabase } from 'angularfire2/database';
+
   /**
  * Generated class for the JobstatusPage page.
  *
@@ -33,10 +35,12 @@ export class JobstatusPage {
       selected: [false, null],
       rejected: [false, null],
       ghosted: [false, null],
-      pending: ['', null],
+      pending: [, null],
       interviewType: ['', null],
       stage: ['', null],
-      interviewDate: ['', null]
+      interviewDate: ['', null],
+      notes: ['', null]
+      
     });
     }
 
@@ -70,11 +74,34 @@ export class JobstatusPage {
   
 
   rejected(){
-    let rejectionModal = this.modalCtrl.create(RejectionModalPage);
+    let rejectionModal = this.modalCtrl.create(RejectionModalPage, {key: this.id});
     rejectionModal.present();
   }
 
   ghosted(){
 
   }
+
+  updateInterview(data){
+    this.FirebaseProvider.addInterview(this.id, data.interviewType, data.interviewDate, data.stage, data.notes);
+    
+  }
+
+  testing(){
+    console.log(this.id);
+    this.FirebaseProvider.testing(this.id);
+    
+  }
 }
+
+//  {company: "New Relic", date: "06-05-17", position: "TSE", status: "Pending", 
+//  "Process" : [ { 
+//                    stage:
+//                    interview type:
+//                    date: 
+
+//                    
+//
+
+//    "Peo"
+//
