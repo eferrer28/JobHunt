@@ -34,17 +34,7 @@ export class HomePage {
         this.fb.getUserProfile().subscribe(data => {
           //console.log(data);
           this.entries = data;
-          /*
-          Object.keys(data).forEach(key => {
-            this.entries = data;
-            //this.entries.push(key);
-            //this.entries.push(data[key]);
-            console.log(key);
-            console.log(data[key]);
-            console.log(this.entries);
 
-          });
-          */
           console.log(this.entries);
           
           

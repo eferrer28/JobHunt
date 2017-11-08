@@ -1,8 +1,8 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
-
 /**
  * Generated class for the RejectionModalPage page.
  *
@@ -36,6 +36,8 @@ export class RejectionModalPage {
   updateRejection(details){
     console.log('MEH');
     this.FirebaseProvider.updateRejection(details.dateRejected, details.notes, this.navParams.get('key'))
+    this.navCtrl.setRoot(HomePage);
+    
   }
 
 }

@@ -1,3 +1,4 @@
+import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -42,6 +43,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Job Entry', component: JobEntryPage },
+      { title: 'Closed Applications', component: ClosedAppsPage },
       { title: 'Profile', component: ProfilePage},
       { title: 'Logout', component: LogoutPage}
     ];

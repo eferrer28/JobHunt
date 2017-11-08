@@ -13,11 +13,16 @@ import { Observable } from 'rxjs/Observable';
   See https://angular.io/docs/ts/latest/guide/dependency-injection.html
   for more info on providers and Angular DI.
 */
+
+
 @Injectable()
 export class FirebaseProvider {
 
+  
+
   user: firebase.User;
   authState: Observable<firebase.User>;
+  count = 0;
 
   constructor(public http: Http, private afAuth: AngularFireAuth,
     public afd: AngularFireDatabase) {
@@ -78,10 +83,26 @@ export class FirebaseProvider {
   } 
  
   addInterview(key, type, date, stage, notes){
-    return this.afd.list('/userProfile/' + this.user.uid + '/' + key).push({round: stage, 
+
+    this.count++
+    
+    return this.afd.list('/userProfile/' + this.user.uid + '/' + key).push({round: this.count, 
       interviewType: type, interviewDate: date, interviewNotes: notes} );
   }
-  
+
+  //add new name after this.user.uid... something like /entries/
+
+  getClosedApps(){
+    return this.afd.list('/userProfile/' + this.user.uid, {
+      query: {
+        orderByChild: 'status',
+        equalTo: 'rejected'
+
+
+      }
+    });
+    
+  }
  
 
   

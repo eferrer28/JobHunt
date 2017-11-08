@@ -1,3 +1,4 @@
+import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -12,6 +13,7 @@ import { ProfilePage } from './../pages/profile/profile';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
 import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
 import { RejectionModalPage } from './../pages/rejection-modal/rejection-modal';
+
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -51,7 +53,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     JobstatusPage,
     DerpPipe,
     GhostedModalPage,
-    RejectionModalPage
+    RejectionModalPage,
+    ClosedAppsPage
 
   ],
   imports: [
@@ -74,7 +77,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     ProfilePage,
     JobstatusPage,
     GhostedModalPage,
-    RejectionModalPage
+    RejectionModalPage,
+    ClosedAppsPage
 
   ],
   providers: [
