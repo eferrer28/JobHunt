@@ -67,7 +67,7 @@
     <ion-col>
         <ion-title>Status</ion-title>
         <ion-list *ngFor="let item of items | async">
-            <ion-item (click)="moreDetails(item.key, entries)">
+            <ion-item (click)="moreDetails(item.$key, items)">
             
             {{item.status}}
           </ion-item>

@@ -48,7 +48,9 @@ export class FirebaseProvider {
     });
   }
 
-  getEntries(){
+  getDetailedEntries(key){
+    console.log(key);
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key);
     
   }
 

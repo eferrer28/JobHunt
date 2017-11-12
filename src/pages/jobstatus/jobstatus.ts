@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
   /**
  * Generated class for the JobstatusPage page.
@@ -20,6 +21,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class JobstatusPage {
 
+  items: Observable<any[]>;
+  
   id: string;
   someObj: object;
   smallerObj: object;
@@ -52,7 +55,22 @@ export class JobstatusPage {
     console.log('ionViewDidLoad JobstatusPage');
     this.id = this.navParams.get('param')
     console.log(this.id);
-    //console.log(this.navParams.get('param2'));
+    this.items = this.navParams.get('param2')
+    
+
+    this.FirebaseProvider.getDetailedEntries(this.id).subscribe(data => {
+      let value = data.company
+      let value1 = data.position; 
+      let value2 = data.date;
+      this.jobstatusForm.patchValue({company: value});
+      this.jobstatusForm.patchValue({position: value1});
+      this.jobstatusForm.patchValue({date: value2});
+      
+      
+    }, err => {
+      console.log('some err: ', err);
+    });
+    /*console.log(this.navParams.get('param2'));
     this.someObj = this.navParams.get('param2')
     console.log(this.someObj[this.id]);
     this.smallerObj = this.someObj[this.id];
@@ -60,7 +78,7 @@ export class JobstatusPage {
     this.jobstatusForm.patchValue({company: this.smallerObj['company']});
     this.jobstatusForm.patchValue({position: this.smallerObj['position']});
     this.jobstatusForm.patchValue({date: this.smallerObj['date']});
-    
+    */
   }
 
 }

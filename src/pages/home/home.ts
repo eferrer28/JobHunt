@@ -46,6 +46,8 @@ export class HomePage {
     console.log("HEY");
     //console.log(info);
     console.log(key);
+    console.log(entries);
+    
     this.navCtrl.push(JobstatusPage, {param: key, param2: entries});
     
   }
