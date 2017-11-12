@@ -15,4 +15,25 @@
 
 <ion-content padding>
 
+    <ion-title>Company Name</ion-title>
+    
+  <ion-list *ngFor="let item of stuff | derp">
+      <ion-label stacked>Interview Round</ion-label>
+      
+      <ion-item >{{item.value.round}}</ion-item>
+
+      <ion-label stacked>Interview Date</ion-label>
+      
+  <ion-item >{{item.value.interviewDate}}</ion-item>
+
+  <ion-label stacked>Interview Type</ion-label>
+  
+  <ion-item >{{item.value.interviewType}}</ion-item>     
+
+   <ion-label stacked>Interview Notes</ion-label>
+  
+  <ion-item >{{item.value.interNotes}}</ion-item>
+  
+</ion-list>
+
 </ion-content>

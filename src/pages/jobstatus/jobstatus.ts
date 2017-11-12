@@ -7,12 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
-  /**
- * Generated class for the JobstatusPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -59,6 +54,7 @@ export class JobstatusPage {
     
 
     this.FirebaseProvider.getDetailedEntries(this.id).subscribe(data => {
+      console.log(data);
       let value = data.company
       let value1 = data.position; 
       let value2 = data.date;
@@ -70,15 +66,7 @@ export class JobstatusPage {
     }, err => {
       console.log('some err: ', err);
     });
-    /*console.log(this.navParams.get('param2'));
-    this.someObj = this.navParams.get('param2')
-    console.log(this.someObj[this.id]);
-    this.smallerObj = this.someObj[this.id];
-    console.log(this.smallerObj['company']);
-    this.jobstatusForm.patchValue({company: this.smallerObj['company']});
-    this.jobstatusForm.patchValue({position: this.smallerObj['position']});
-    this.jobstatusForm.patchValue({date: this.smallerObj['date']});
-    */
+
   }
 
 }
@@ -105,11 +93,4 @@ export class JobstatusPage {
     
   }
 
-  /*
-  testing(){
-    console.log(this.id);
-    this.FirebaseProvider.testing(this.id);
-    
-  }
-  */
 }

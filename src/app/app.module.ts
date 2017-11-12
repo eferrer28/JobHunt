@@ -1,3 +1,4 @@
+import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { SelectedPage } from './../pages/selected/selected';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +15,6 @@ import { ProfilePage } from './../pages/profile/profile';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
 import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
 import { RejectionModalPage } from './../pages/rejection-modal/rejection-modal';
-
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -55,7 +55,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     GhostedModalPage,
     RejectionModalPage,
     ClosedAppsPage,
-    SelectedPage
+    SelectedPage,
+    DetailedInterviewPage
 
   ],
   imports: [
@@ -80,7 +81,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     GhostedModalPage,
     RejectionModalPage,
     ClosedAppsPage,
-    SelectedPage
+    SelectedPage,
+    DetailedInterviewPage
 
   ],
   providers: [

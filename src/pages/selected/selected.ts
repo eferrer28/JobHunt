@@ -1,13 +1,8 @@
+import { DetailedInterviewPage } from './../detailed-interview/detailed-interview';
 import { Observable } from 'rxjs/Observable';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-/**
- * Generated class for the SelectedPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -28,7 +23,6 @@ export class SelectedPage {
     ionViewDidLoad() {
       this.fb.authState.subscribe(user => {
         if (user) {
-          //this.entries = this.fb.getUserProfile();
           
           this.entries = this.fb.getSelectedApps();
           console.log("hi");
@@ -39,6 +33,16 @@ export class SelectedPage {
         }
       })
     }
+
+    moreDetails(key, entries){
+      console.log("HEY");
+      //console.log(info);
+      console.log(key);
+      console.log(entries);
+      
+      this.navCtrl.push(DetailedInterviewPage, {param: key, param2: entries});
+      
+    } 
   
   }
   

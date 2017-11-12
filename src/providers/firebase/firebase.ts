@@ -66,6 +66,12 @@ export class FirebaseProvider {
     
   }
 
+  getDetailedInterview(key){
+    console.log(key);
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key);
+    
+  }
+
   getHomePage() {
         //console.log("lololol");
         //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');

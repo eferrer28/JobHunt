@@ -40,10 +40,16 @@ export class DerpPipe implements PipeTransform {
 
     //code taken from here https://stackoverflow.com/questions/35534959/access-key-and-value-of-object-using-ngfor
     //used this over the above code as it gives me the keys as well
+    let fudge = ['company', "date", "position", "status"];
     let keys = [];
     for (let key in value) {
-      keys.push({key: key, value: value[key]});
+      if(!(key == "company" || key == "date" || key == "status" || key == "position")){
+        keys.push({key: key, value: value[key]});
+        
+      }
+
     }
+    console.log(keys);
     return keys;
   }
 }
