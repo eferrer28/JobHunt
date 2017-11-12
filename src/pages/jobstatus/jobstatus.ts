@@ -101,7 +101,7 @@ export class JobstatusPage {
   }
 
   updateInterview(data){
-    this.FirebaseProvider.addInterview(this.id, data.interviewType, data.interviewDate, data.stage, data.notes);
+    this.FirebaseProvider.addInterview(this.id, data.interviewType, data.interviewDate, data.notes);
     
   }
 

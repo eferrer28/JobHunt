@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs/Observable';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 /**
  * Generated class for the SelectedPage page.
  *
@@ -14,12 +15,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'selected.html',
 })
 export class SelectedPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+    user: firebase.User;
+   entries: Observable<any[]>;
+  //entries:[ Array<any>];
+    
+  
+    constructor(public navCtrl: NavController, public navParams: NavParams, 
+      public fb: FirebaseProvider) {
+    }
+  
+    ionViewDidLoad() {
+      this.fb.authState.subscribe(user => {
+        if (user) {
+          //this.entries = this.fb.getUserProfile();
+          
+          this.entries = this.fb.getSelectedApps();
+          console.log("hi");
+          console.log(this.entries);
+  
+        } else {
+          this.entries = null;
+        }
+      })
+    }
+  
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SelectedPage');
-  }
-
-}
+  

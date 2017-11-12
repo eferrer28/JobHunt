@@ -1,3 +1,4 @@
+import { SelectedPage } from './../pages/selected/selected';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 
 import { Component, ViewChild } from '@angular/core';
@@ -43,6 +44,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Job Entry', component: JobEntryPage },
+      { title: 'In Interviews', component: SelectedPage },
+      
       { title: 'Closed Applications', component: ClosedAppsPage },
       { title: 'Profile', component: ProfilePage},
       { title: 'Logout', component: LogoutPage}

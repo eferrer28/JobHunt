@@ -7,21 +7,14 @@ import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 
 
-/*
-  Generated class for the FirebaseProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
-
 
 @Injectable()
 export class FirebaseProvider {
 
-  
-
   user: firebase.User;
   authState: Observable<firebase.User>;
+
+  //Global count is used to keep track of current stage of interiew
   count = 0;
 
   constructor(public http: Http, private afAuth: AngularFireAuth,
@@ -33,9 +26,28 @@ export class FirebaseProvider {
           this.user = user;
         });
   }
+
+  register(email, password){
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
+      newUser => {
+        this.afd.list('/userProfile').update(newUser.uid, {email: email})
+      }
+    )
+  }
  
   logoutUser(){
     return this.afAuth.auth.signOut();
+  }
+
+  getUserProfile() {
+    
+    console.log("poop");
+    return this.afd.object('/userProfile/' + this.user.uid);
+        
+  }
+
+  updateDetails(first, second) {
+    return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
   }
 
   createNewEntry(companyEntry, positionEntry, dateEntry, statusEntry){
@@ -54,42 +66,15 @@ export class FirebaseProvider {
     
   }
 
-  register(email, password){
-    return this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
-      newUser => {
-        this.afd.list('/userProfile').update(newUser.uid, {email: email})
-      }
-    )
-  }
-
-  getUserProfile() {
-
-    console.log("poop");
-    return this.afd.object('/userProfile/' + this.user.uid);
-    
-  }
-
   getHomePage() {
-    
         //console.log("lololol");
         //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
         return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
           query: {
             orderByChild: 'status',
             equalTo: 'pending'
-    
-    
-          }
-        });
       }
-
-  updateDetails(first, second) {
-    return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
-  }
-
-  testing(first){
-    return this.afd.object('/userProfile/' + this.user.uid + '/' + first).update({company: first} );
-    
+    });
   }
 
   updateRejection(rejectionDate, rejectionNotes, key){
@@ -97,8 +82,16 @@ export class FirebaseProvider {
     notes: rejectionNotes, status: 'rejected'} );
     
   } 
- 
-  addInterview(key, type, date, stage, notes){
+
+  updateGhosted(ghostedDate, ghostedNotes, key){
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: ghostedDate, 
+    notes: ghostedNotes, status: 'ghosted'} );
+    
+  } 
+  
+  addInterview(key, type, date, notes){
+
+    this.updateInterviewStatus(key);
 
     this.count++
     
@@ -106,7 +99,21 @@ export class FirebaseProvider {
       interviewType: type, interviewDate: date, interviewNotes: notes} );
   }
 
+  updateInterviewStatus(key){
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({ status: 'selected'} );
+  }
+
   //add new name after this.user.uid... something like /entries/
+  getSelectedApps(){
+    console.log(this.user.uid);
+    return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
+      query: {
+        orderByChild: 'status',
+        equalTo: 'selected'
+      }
+    });
+    
+  }
 
   getClosedApps(){
     console.log(this.user.uid);
@@ -115,11 +122,9 @@ export class FirebaseProvider {
         orderByChild: 'status',
         equalTo: 'rejected'
 
-
       }
     });
     
   }
    
-
 }

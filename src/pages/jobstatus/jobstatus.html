@@ -20,7 +20,7 @@
 <ion-list>
   <ion-item>
     <ion-label stacked>Company Name</ion-label>
-    <ion-input  type="text" formControlName="company" placeholder="tee"></ion-input>
+    <ion-input disabled="true"  type="text" formControlName="company"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label stacked>Position Applied For</ion-label>
@@ -28,6 +28,7 @@
   </ion-item>
   <ion-item>
     <ion-label stacked>Date Applied</ion-label>
+    
     <ion-datetime disabled="true" formControlName="date" min="2017" displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY"></ion-datetime>
   </ion-item>
 
@@ -70,8 +71,8 @@
             <ion-select formControlName="interviewType">
               <ion-option value="Phone Screen">Phone Screen</ion-option>
               <ion-option value="Phone Interview">Phone Interview</ion-option>
-              <ion-option value="">Technical Challenge</ion-option>
-              <ion-option value="m">On Site Interview</ion-option>
+              <ion-option value="Tech Challenge">Technical Challenge</ion-option>
+              <ion-option value="OnSite">On Site Interview</ion-option>
               
               
             </ion-select>
@@ -82,10 +83,7 @@
              <ion-datetime displayFormat="MM/DD/YYYY" formControlName="interviewDate"></ion-datetime>
           </ion-item>
 
-          <ion-item>
-         <ion-label stacked>Stage</ion-label>
-        <ion-input type="number" formControlName="stage"></ion-input>
-     </ion-item>
+
 
      <ion-item>
         <ion-label stacked>Interview Notes</ion-label>
@@ -100,7 +98,6 @@
 </form>
 
 
-<ion-item *ngIf="isChecked">MEH MEH </ion-item>
 </ion-content>
 
 
