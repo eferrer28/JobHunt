@@ -17,7 +17,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ClosedAppsPage {
 
   user: firebase.User;
-  entries: Observable<any[]>;
+ entries: Observable<any[]>;
+//entries:[ Array<any>];
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -27,8 +28,9 @@ export class ClosedAppsPage {
   ionViewDidLoad() {
     this.fb.authState.subscribe(user => {
       if (user) {
-
-        this.entries = this.fb.getUserProfile();
+        //this.entries = this.fb.getUserProfile();
+        
+        this.entries = this.fb.getClosedApps();
         console.log("hi");
         console.log(this.entries);
 

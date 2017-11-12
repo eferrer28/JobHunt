@@ -29,21 +29,19 @@ export class HomePage {
   ionViewDidLoad() {
     this.fb.authState.subscribe(user => {
       if (user) {
-
+        //this.entries = this.fb.getUserProfile();
         
-        this.fb.getUserProfile().subscribe(data => {
-          //console.log(data);
-          this.entries = data;
+        this.items = this.fb.getHomePage();
+        console.log("hi");
+        console.log(this.items);
 
-          console.log(this.entries);
-          
-          
-        }, err => {
-          console.log('some err: ', err);
-        });
+      } else {
+        this.items = null;
       }
     })
   }
+
+
   moreDetails(key, entries){
     console.log("HEY");
     //console.log(info);

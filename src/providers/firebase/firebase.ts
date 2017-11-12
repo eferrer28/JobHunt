@@ -33,13 +33,13 @@ export class FirebaseProvider {
           this.user = user;
         });
   }
-
+ 
   logoutUser(){
     return this.afAuth.auth.signOut();
   }
 
   createNewEntry(companyEntry, positionEntry, dateEntry, statusEntry){
-    return this.afd.list('/userProfile/' + this.user.uid).push({
+    return this.afd.list('/userProfile/' + this.user.uid + '/applications/').push({
       company: companyEntry,
       position: positionEntry,
       date: dateEntry,
@@ -67,6 +67,20 @@ export class FirebaseProvider {
     
   }
 
+  getHomePage() {
+    
+        //console.log("lololol");
+        //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
+        return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
+          query: {
+            orderByChild: 'status',
+            equalTo: 'pending'
+    
+    
+          }
+        });
+      }
+
   updateDetails(first, second) {
     return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
   }
@@ -77,8 +91,8 @@ export class FirebaseProvider {
   }
 
   updateRejection(rejectionDate, rejectionNotes, key){
-    return this.afd.object('/userProfile/' + this.user.uid + '/' + key).update({dateRejected: rejectionDate, 
-    notes: rejectionNotes} );
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: rejectionDate, 
+    notes: rejectionNotes, status: 'rejected'} );
     
   } 
  
@@ -86,14 +100,15 @@ export class FirebaseProvider {
 
     this.count++
     
-    return this.afd.list('/userProfile/' + this.user.uid + '/' + key).push({round: this.count, 
+    return this.afd.list('/userProfile/' + this.user.uid +  '/applications/' + key).push({round: this.count, 
       interviewType: type, interviewDate: date, interviewNotes: notes} );
   }
 
   //add new name after this.user.uid... something like /entries/
 
   getClosedApps(){
-    return this.afd.list('/userProfile/' + this.user.uid, {
+    console.log(this.user.uid);
+    return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
       query: {
         orderByChild: 'status',
         equalTo: 'rejected'
@@ -103,8 +118,6 @@ export class FirebaseProvider {
     });
     
   }
- 
-
-  
+   
 
 }

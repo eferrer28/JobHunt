@@ -87,21 +87,11 @@ export class JobstatusPage {
     
   }
 
+  /*
   testing(){
     console.log(this.id);
     this.FirebaseProvider.testing(this.id);
     
   }
+  */
 }
-
-//  {company: "New Relic", date: "06-05-17", position: "TSE", status: "Pending", 
-//  "Process" : [ { 
-//                    stage:
-//                    interview type:
-//                    date: 
-
-//                    
-//
-
-//    "Peo"
-//

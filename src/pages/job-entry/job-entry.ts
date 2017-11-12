@@ -33,9 +33,6 @@ export class JobEntryPage {
     this.user = this.fb.group({
       company: [null],
       position: [null],
-      pending: [null],
-      selected: [null],
-      rejected: [null],
       date: ['']
     });
   }
@@ -46,18 +43,11 @@ export class JobEntryPage {
     console.log(post.company);
     console.log(post.position);
     console.log(post.date);
-    console.log(post.pending);
-    console.log(this.pending);
+
   }
 
   newEntry(post): void{
-    /*
-    if(post.pending == true){
-      console.log("correct");
-      //this.status = pending 
-      
 
-    }*/
 
     //this.entryProvider.createEntry(post.company, post.position, post.date, "pending").then(
       this.firebaseProvider.createNewEntry(post.company, post.position, post.date, "pending").then(
