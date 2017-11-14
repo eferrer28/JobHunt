@@ -1,9 +1,9 @@
+import { MenuPage } from './../menu/menu';
 import { RegisterPage } from './../register/register';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 /**
  * Generated class for the LoginPage page.
  *
@@ -40,6 +40,10 @@ export class LoginPage {
     // Login Code here
     this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
     .then(auth => {
+      //per side menu and tabs navigation
+      //this.navCtrl.setRoot('MenuPage');
+      this.navCtrl.setRoot(MenuPage);
+      
       // Do custom things with auth
     })
     .catch(err => {

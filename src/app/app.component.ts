@@ -15,7 +15,6 @@ import { ProfilePage } from './../pages/profile/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -40,6 +39,7 @@ export class MyApp {
 
     this.initializeApp();
 
+    /*
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -50,7 +50,7 @@ export class MyApp {
       { title: 'Profile', component: ProfilePage},
       { title: 'Logout', component: LogoutPage}
     ];
-
+    */
   }
 
   initializeApp() {
@@ -68,3 +68,5 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 }
+
+

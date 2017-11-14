@@ -1,3 +1,5 @@
+import { MenuPage } from './../pages/menu/menu';
+
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { SelectedPage } from './../pages/selected/selected';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
@@ -19,7 +21,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpModule } from '@angular/http';
-
 
 
 import { ReactiveFormsModule } from '@angular/forms'
@@ -56,7 +57,9 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage
+    DetailedInterviewPage,
+    MenuPage
+
 
   ],
   imports: [
@@ -82,7 +85,9 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage
+    DetailedInterviewPage,
+    MenuPage
+
 
   ],
   providers: [
@@ -94,3 +99,22 @@ import { DerpPipe } from './/../pipes/derp/derp'
   ]
 })
 export class AppModule {}
+
+
+/*
+
+import { NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
+import { MenuPage } from './menu';
+
+@NgModule({
+  declarations: [
+    MenuPage,
+  ],
+  imports: [
+    IonicPageModule.forChild(MenuPage),
+  ],
+})
+export class MenuPageModule {}
+
+*/
