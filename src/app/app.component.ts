@@ -10,7 +10,6 @@ import { HomePage } from '../pages/home/home';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from './../pages/profile/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -34,9 +33,13 @@ export class MyApp {
   
  
   pages: PageInterface[] = [
-    { title: 'HomePage', pageName: 'HomePage', tabComponent: 'SelectedPage', index: 0, icon: 'home' },
-    { title: 'Tab 2', pageName: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 1, icon: 'contacts' },
-    { title: 'Logout', pageName: 'LogoutPage', tabComponent: LogoutPage, index: 2, icon: 'home'}
+    { title: 'Recent', pageName: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Pending', pageName: 'SelectedPage', tabComponent: 'SelectedPage', index: 1, icon: 'contacts' },
+  
+    { title: 'Closed', pageName: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 2, icon: 'contacts' },
+    { title: 'Application Stats', pageName: 'LogoutPage',  icon: 'home'},
+    
+    { title: 'Logout', pageName: 'LogoutPage',  icon: 'home'}
     
   ];
 
@@ -80,13 +83,6 @@ export class MyApp {
     });
   }
 
-  /*
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-  }
-  */
 
 
 

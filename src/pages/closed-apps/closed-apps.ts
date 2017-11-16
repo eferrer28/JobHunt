@@ -18,6 +18,7 @@ export class ClosedAppsPage {
 
   user: firebase.User;
  entries: Observable<any[]>;
+ 
 //entries:[ Array<any>];
   
 
@@ -33,6 +34,10 @@ export class ClosedAppsPage {
         this.entries = this.fb.getClosedApps();
         console.log("hi");
         console.log(this.entries);
+        
+
+
+
 
       } else {
         this.entries = null;

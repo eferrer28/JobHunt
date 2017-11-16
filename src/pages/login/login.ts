@@ -1,4 +1,3 @@
-import { MenuPage } from './../menu/menu';
 import { RegisterPage } from './../register/register';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
@@ -42,7 +41,7 @@ export class LoginPage {
     .then(auth => {
       //per side menu and tabs navigation
       //this.navCtrl.setRoot('MenuPage');
-      this.navCtrl.setRoot(MenuPage);
+      //this.navCtrl.setRoot(MenuPage);
       
       // Do custom things with auth
     })

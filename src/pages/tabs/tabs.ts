@@ -18,8 +18,8 @@ import { SelectedPage } from './../selected/selected';
 export class TabsPage{
 // set the root pages for each tab
 tab1Root: any = HomePage;
-tab2Root: any = ClosedAppsPage;
-//tab3Root: any = ClosedAppsPage;
+tab2Root: any = SelectedPage;
+tab3Root: any = ClosedAppsPage;
 //tab4Root: any = AboutPage;
 mySelectedIndex: number;
 

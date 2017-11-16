@@ -1,4 +1,3 @@
-import { MenuPage } from './../pages/menu/menu';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { SelectedPage } from './../pages/selected/selected';
@@ -12,7 +11,6 @@ import { HomePage } from '../pages/home/home';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { LogoutPage } from './../pages/logout/logout';
 import { ProfilePage } from './../pages/profile/profile';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
 import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
@@ -49,7 +47,6 @@ import { DerpPipe } from './/../pipes/derp/derp'
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    LogoutPage,
     ProfilePage,
     JobstatusPage,
     DerpPipe,
@@ -57,8 +54,7 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage,
-    MenuPage
+    DetailedInterviewPage
 
 
   ],
@@ -78,15 +74,13 @@ import { DerpPipe } from './/../pipes/derp/derp'
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    LogoutPage,
     ProfilePage,
     JobstatusPage,
     GhostedModalPage,
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage,
-    MenuPage
+    DetailedInterviewPage
 
 
   ],
