@@ -1,3 +1,4 @@
+import { JobEntryPage } from './../job-entry/job-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ClosedAppsPage } from './../closed-apps/closed-apps';
@@ -18,7 +19,7 @@ import { SelectedPage } from './../selected/selected';
 export class TabsPage{
 // set the root pages for each tab
 tab1Root: any = HomePage;
-tab2Root: any = SelectedPage;
+tab2Root: any = JobEntryPage;
 tab3Root: any = ClosedAppsPage;
 //tab4Root: any = AboutPage;
 mySelectedIndex: number;

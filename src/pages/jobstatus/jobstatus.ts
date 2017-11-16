@@ -2,7 +2,7 @@ import { GhostedModalPage } from './../ghosted-modal/ghosted-modal';
 import { RejectionModalPage } from './../rejection-modal/rejection-modal';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ToastController  } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -25,7 +25,9 @@ export class JobstatusPage {
   isChecked = false;
   
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
-  public FirebaseProvider: FirebaseProvider, public modalCtrl: ModalController) {
+  public FirebaseProvider: FirebaseProvider, public modalCtrl: ModalController, 
+  public alertCtrl: AlertController, 
+  public toastCtrl: ToastController) {
     this.jobstatusForm = formBuilder.group({
       company: ['', null],
       position: ['', null],
@@ -85,7 +87,45 @@ export class JobstatusPage {
   }
 
   ghosted(){
+    console.log("da fuck");
+    let prompt = this.alertCtrl.create({
+      title: 'Details',
+      inputs: [
+        {
+          name: 'name',
+          placeholder: 'Ghosted Notes',
+          type: 'text'
+        },
+        {
+          name: "date",
+          placeholder: "Enter the date ghosted",
+          type: 'date'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Update Status',
+          handler: data => {
+            this.FirebaseProvider.updateGhosted(data.name, data.date, this.id).then(data => {
+              this.presentToast('Status Updated!');
+            });
+          }
+        }
+      ]
+    });
+    prompt.present();
 
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    });
+    toast.present();
   }
 
   updateInterview(data){

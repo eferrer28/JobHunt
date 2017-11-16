@@ -55,7 +55,8 @@ export class FirebaseProvider {
       company: companyEntry,
       position: positionEntry,
       date: dateEntry,
-      status: statusEntry
+      status: statusEntry,
+      closed: "false"
 
     });
   }
@@ -85,14 +86,21 @@ export class FirebaseProvider {
 
   updateRejection(rejectionDate, rejectionNotes, key){
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: rejectionDate, 
-    notes: rejectionNotes, status: 'rejected'} );
+    notes: rejectionNotes, status: 'rejected', closed: "true"
+  } );
     
   } 
 
   updateGhosted(ghostedDate, ghostedNotes, key){
-    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: ghostedDate, 
-    notes: ghostedNotes, status: 'ghosted'} );
+
+    console.log(ghostedDate);
+    console.log(ghostedNotes);
+    console.log(key);
     
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: ghostedDate, 
+    notes: ghostedNotes, status: 'ghosted', closed: "true"} );
+    
+
   } 
   
   addInterview(key, type, date, notes){
@@ -125,8 +133,13 @@ export class FirebaseProvider {
     console.log(this.user.uid);
     return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
       query: {
+        /*
         orderByChild: 'status',
-        equalTo: 'rejected'
+        equalTo: 'rejected',
+        */
+        orderByChild: 'closed',
+        equalTo: 'true'
+        
 
       }
     });
