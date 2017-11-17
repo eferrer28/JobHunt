@@ -1,3 +1,4 @@
+import { StatisticsPage } from './../pages/statistics/statistics';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { SelectedPage } from './../pages/selected/selected';
@@ -54,7 +55,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage
+    DetailedInterviewPage,
+    StatisticsPage
 
 
   ],
@@ -80,7 +82,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     RejectionModalPage,
     ClosedAppsPage,
     SelectedPage,
-    DetailedInterviewPage
+    DetailedInterviewPage,
+    StatisticsPage
 
 
   ],

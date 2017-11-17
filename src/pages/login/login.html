@@ -9,14 +9,23 @@
       <form [formGroup]="loginForm" (submit)="login(loginForm.value)">
           
     <ion-list>
+
       <ion-item>
         <ion-label floating>E-Mail</ion-label>
         <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
+      <ion-item *ngIf="loginForm.controls.email.invalid">
+        <p>Please provid a valid email address.</p>
+      </ion-item>
+
+
       <ion-item>
         <ion-label floating>Password</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
+
+
+
     </ion-list>
     <button full ion-button>Login</button>
     <a href="#" (click)="signup()">Signup for an Account</a>

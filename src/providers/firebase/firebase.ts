@@ -84,6 +84,11 @@ export class FirebaseProvider {
     });
   }
 
+  getStats(){
+    return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
+      
+  }
+
   updateRejection(rejectionDate, rejectionNotes, key){
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: rejectionDate, 
     notes: rejectionNotes, status: 'rejected', closed: "true"

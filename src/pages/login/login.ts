@@ -27,8 +27,8 @@ export class LoginPage {
             private toastCtrl: ToastController, private fb: FormBuilder) { 
 
               this.loginForm = fb.group({
-                email: '',
-                password: '',
+                email:['', [Validators.required, Validators.minLength(2)]],
+                password: ['', [Validators.required]],
                 
               });  
             }
