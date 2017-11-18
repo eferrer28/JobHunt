@@ -21,6 +21,9 @@ export class StatisticsPage {
   ghostedTotal = 0;
   selectionCount = 0;
   pendingCount = 0;
+  responseRate = 0;
+  rejectionRate = 0;
+  ghostedRate = 0;
 
   //@ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -96,6 +99,11 @@ export class StatisticsPage {
       console.log("ghosted count is " + this.ghostedTotal);
       console.log("Selection count is " + this.selectionCount);
       console.log("Pending count is " + this.pendingCount);
+
+      this.responseRate = (this.pendingCount / this.applicationTotal) * 100;
+      this.rejectionRate =  (this.rejectionTotal / this.applicationTotal) * 100;
+      this.ghostedRate = (this.ghostedTotal / this.applicationTotal) * 100;
+      
 
       this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
         
