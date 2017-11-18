@@ -1,6 +1,7 @@
 import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Chart } from 'chart.js';
 /**
  * Generated class for the StatisticsPage page.
  *
@@ -20,6 +21,27 @@ export class StatisticsPage {
   ghostedTotal = 0;
   selectionCount = 0;
   pendingCount = 0;
+
+  //@ViewChild('barCanvas') barCanvas;
+  @ViewChild('doughnutCanvas') doughnutCanvas;
+  //@ViewChild('lineCanvas') lineCanvas;
+
+  //barChart: any;
+  doughnutChart: any;
+  //lineChart: any;
+
+  public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+  public doughnutChartData:number[] = [350, 450, 100];
+  public doughnutChartType:string = 'doughnut';
+  
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+  
+  public chartHovered(e:any):void {
+    console.log(e);
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
   }
@@ -74,6 +96,33 @@ export class StatisticsPage {
       console.log("ghosted count is " + this.ghostedTotal);
       console.log("Selection count is " + this.selectionCount);
       console.log("Pending count is " + this.pendingCount);
+
+      this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+        
+                   type: 'doughnut',
+                   data: {
+                       labels: ["Rejections", "Ghosted", "Selected For Interview", "Awaiting Response"],
+                       datasets: [{
+                           label: 'Applications Breakdown',
+                           data: [this.rejectionTotal, this.ghostedTotal, this.selectionCount, this.pendingCount],
+                           backgroundColor: [
+                               'rgba(255, 99, 132, 0.2)',
+                               'rgba(54, 162, 235, 0.2)',
+                               'rgba(255, 206, 86, 0.2)',
+                               'rgba(75, 192, 192, 0.2)',
+  
+                           ],
+                           hoverBackgroundColor: [
+                               "#FF6384",
+                               "#36A2EB",
+                               "#FFCE56",
+                               "#FF6384",
+  
+                           ]
+                       }]
+                   }
+        
+               });
       
     }, err => {
       console.log('some err: ', err);
@@ -82,7 +131,13 @@ export class StatisticsPage {
   }
 
 }
-    )}
+    )
+    
+
+  }
+
+
+    
 
 
 

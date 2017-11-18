@@ -6,6 +6,8 @@ import { NavController } from 'ionic-angular';
 import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable'
 import firebase from 'firebase';
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

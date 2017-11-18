@@ -20,6 +20,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpModule } from '@angular/http';
+import { ChartsModule } from 'ng2-charts';
+
 
 
 import { ReactiveFormsModule } from '@angular/forms'
@@ -67,7 +69,9 @@ import { DerpPipe } from './/../pipes/derp/derp'
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    HttpModule
+    HttpModule,
+    ChartsModule
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
