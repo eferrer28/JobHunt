@@ -15,6 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class StatisticsPage {
 
   entries = [];
+  applicationTotal = 0;
+  rejectionTotal = 0;
+  ghostedTotal = 0;
+  selectionCount = 0;
+  pendingCount = 0;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public fb: FirebaseProvider) {
   }
@@ -24,20 +29,51 @@ export class StatisticsPage {
       if (user) {
 
 
-    console.log('ionViewDidLoad JobstatusPage');
+    console.log('ionViewDidEnter JobstatusPage');
 
     
 
     this.fb.getStats().subscribe(data => {
       console.log(data);
-      
-      this.entries = data;
+      this.applicationTotal = 0;
+      this.rejectionTotal = 0;
+      this.ghostedTotal = 0;
+      this.selectionCount = 0;
+      this.pendingCount = 0;
+      //this.entries = data;
       let value = data.company;
       let value1 = data.position; 
       let value2 = data.date;
-      console.log(this.entries);
-      this.func();
-      
+      console.log(data);
+      //this.func();
+      Object.keys(data).forEach(key => {
+
+        //add one to the applied list
+        this.applicationTotal += 1
+        this.entries = data;
+        //this.entries.push(key);
+        //this.entries.push(data[key]);
+        console.log(key);
+        console.log(data[key]);
+        console.log(this.entries[key]['company']);
+        if (this.entries[key]['status'] == 'pending'){
+          this.pendingCount += 1;
+        }
+        if (this.entries[key]['status'] == 'rejected'){
+          this.rejectionTotal += 1;
+        }
+        if (this.entries[key]['status'] == 'ghosted'){
+          this.ghostedTotal += 1;
+        }
+        if (this.entries[key]['status'] == 'selected'){
+          this.selectionCount += 1;
+        }
+      })
+      console.log("appliction count is " + this.applicationTotal);
+      console.log("rejection count is " + this.rejectionTotal);
+      console.log("ghosted count is " + this.ghostedTotal);
+      console.log("Selection count is " + this.selectionCount);
+      console.log("Pending count is " + this.pendingCount);
       
     }, err => {
       console.log('some err: ', err);
@@ -48,13 +84,6 @@ export class StatisticsPage {
 }
     )}
 
-    func(){
-      this.entries.reduce(function(sums,entry){
-        sums[entry.status] = (sums[entry.status] || 0) + 1;
-        console.log(sums);
-        return sums;
-    },{});
 
-}
 
 }
