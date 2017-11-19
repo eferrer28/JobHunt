@@ -1,3 +1,4 @@
+import { FirebaseProvider } from './../providers/firebase/firebase';
 import { StatisticsPage } from './../pages/statistics/statistics';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 
@@ -35,13 +36,16 @@ export class MyApp {
   
  
   pages: PageInterface[] = [
-    { title: 'Open Applications', pageName: 'HomePage', component: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Selected For Interview', pageName: 'JobEntryPage', component: 'JobEntryPage', tabComponent: 'JobEntryPage', index: 1, icon: 'contacts' },
-  
+    { title: 'Applications', pageName: 'HomePage', component: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'New Entries ', pageName: 'HomePage', component: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Company List ', pageName: 'CompaniesPage', component: 'CompaniesPage', icon: 'home', },
+    
     { title: 'Closed', pageName: 'ClosedAppsPage', component: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 2, icon: 'close' },
 
     
   ];
+
+
 
   accountPages: PageInterface[] = [
     { title: 'Profile', pageName: 'ProfilePage', component: 'ProfilePage', icon: 'person' },
@@ -59,7 +63,7 @@ export class MyApp {
 
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-                private afAuth: AngularFireAuth) {
+                private afAuth: AngularFireAuth, public fb: FirebaseProvider) {
 
     //from tutorial https://aaronczichon.de/2017/03/07/ionic-firebase-authentication/
     this.afAuth.authState.subscribe(auth => {
@@ -87,6 +91,7 @@ export class MyApp {
 
 
   openPage(page: PageInterface) {
+    console.log("la tee dah");
     let params = {};
  
     // The index is equal to the order of our tabs inside tabs.ts
@@ -97,11 +102,13 @@ export class MyApp {
     // The active child nav is our Tabs Navigation
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
+
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
       console.log(page.pageName);
-      this.nav.setRoot(page.pageName).catch((err: any) => {
+      console.log(params);
+      this.nav.push(page.pageName, params).catch((err: any) => {
         console.log(`Didn't set nav root: ${err}`);
   });
     }
