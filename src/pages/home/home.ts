@@ -2,10 +2,12 @@ import { DetailedInterviewPage } from './../detailed-interview/detailed-intervie
 import { JobstatusPage } from './../jobstatus/jobstatus';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component} from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage } from 'ionic-angular';
 import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable'
 import firebase from 'firebase';
+
+@IonicPage()
 
 
 @Component({

@@ -1,6 +1,5 @@
 import { FirebaseProvider } from './../providers/firebase/firebase';
 import { StatisticsPage } from './../pages/statistics/statistics';
-import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
@@ -32,7 +31,7 @@ export class MyApp {
  
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
-  rootPage: any;
+  rootPage: any ='HomePage';
   
  
   pages: PageInterface[] = [
@@ -42,6 +41,7 @@ export class MyApp {
     
     { title: 'Closed', pageName: 'ClosedAppsPage', component: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 2, icon: 'close' },
 
+    { title: 'Profile', pageName: 'ProfilePage', component: 'ProfilePage', icon: 'person' },
     
   ];
 
@@ -108,7 +108,7 @@ export class MyApp {
       // In this case: moving to or from SpecialPage
       console.log(page.pageName);
       console.log(params);
-      this.nav.push(page.pageName, params).catch((err: any) => {
+      this.nav.setRoot(page.pageName, params).catch((err: any) => {
         console.log(`Didn't set nav root: ${err}`);
   });
     }

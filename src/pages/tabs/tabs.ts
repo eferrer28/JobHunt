@@ -2,7 +2,6 @@ import { StatisticsPage } from './../statistics/statistics';
 import { JobEntryPage } from './../job-entry/job-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ClosedAppsPage } from './../closed-apps/closed-apps';
 import { HomePage } from './../home/home';
 /**
  * Generated class for the TabsPage page.

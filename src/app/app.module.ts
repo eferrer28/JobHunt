@@ -1,13 +1,11 @@
 import { StatisticsPage } from './../pages/statistics/statistics';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
-import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
@@ -44,15 +42,13 @@ import { DerpPipe } from './/../pipes/derp/derp'
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     JobEntryPage,
     LoginPage,
     RegisterPage,
     JobstatusPage,
     DerpPipe,
     GhostedModalPage,
-    RejectionModalPage,
-    ClosedAppsPage,
+    RejectionModalPage,  
     DetailedInterviewPage,
     StatisticsPage
 
@@ -72,16 +68,14 @@ import { DerpPipe } from './/../pipes/derp/derp'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     JobEntryPage,
     LoginPage,
     RegisterPage,
     JobstatusPage,
     GhostedModalPage,
     RejectionModalPage,
-    ClosedAppsPage,
     DetailedInterviewPage,
-    StatisticsPage
+    StatisticsPage,
 
 
   ],
