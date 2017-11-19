@@ -1,7 +1,6 @@
 import { StatisticsPage } from './../pages/statistics/statistics';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
-import { SelectedPage } from './../pages/selected/selected';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -12,7 +11,6 @@ import { HomePage } from '../pages/home/home';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
-import { ProfilePage } from './../pages/profile/profile';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
 import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
 import { RejectionModalPage } from './../pages/rejection-modal/rejection-modal';
@@ -50,13 +48,11 @@ import { DerpPipe } from './/../pipes/derp/derp'
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    ProfilePage,
     JobstatusPage,
     DerpPipe,
     GhostedModalPage,
     RejectionModalPage,
     ClosedAppsPage,
-    SelectedPage,
     DetailedInterviewPage,
     StatisticsPage
 
@@ -80,12 +76,10 @@ import { DerpPipe } from './/../pipes/derp/derp'
     JobEntryPage,
     LoginPage,
     RegisterPage,
-    ProfilePage,
     JobstatusPage,
     GhostedModalPage,
     RejectionModalPage,
     ClosedAppsPage,
-    SelectedPage,
     DetailedInterviewPage,
     StatisticsPage
 

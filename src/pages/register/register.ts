@@ -60,15 +60,7 @@ export class RegisterPage {
       return;
     }
     
-    /*
-    // Firebase Signup Code
-    this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
-    .then(auth => {
-      // Could do something with the Auth-Response
-      console.log(auth);
-      firebase.database().ref(`/userProfile/${auth.uid}/email`).set(data.email);
-    })
-    */
+
     this.FirebaseProvider.register(data.email, data.password)
 
     .catch(err => {

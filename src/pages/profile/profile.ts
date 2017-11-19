@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController, Alert } from 'ion
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireDatabase,  FirebaseObjectObservable} from 'angularfire2/database';
 
+
 /**
  * Generated class for the ProfilePage page.
  *

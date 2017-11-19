@@ -1,4 +1,4 @@
-import { SelectedPage } from './../pages/selected/selected';
+import { StatisticsPage } from './../pages/statistics/statistics';
 import { ClosedAppsPage } from './../pages/closed-apps/closed-apps';
 
 import { Component, ViewChild } from '@angular/core';
@@ -17,8 +17,10 @@ export interface PageInterface {
   title: string;
   pageName: string;
   tabComponent?: any;
+  //? means it is optional
   index?: number;
   icon: string;
+  component: any;
 }
 
 @Component({
@@ -33,15 +35,25 @@ export class MyApp {
   
  
   pages: PageInterface[] = [
-    { title: 'Recent', pageName: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
-    { title: 'Pending', pageName: 'SelectedPage', tabComponent: 'SelectedPage', index: 1, icon: 'contacts' },
+    { title: 'Open Applications', pageName: 'HomePage', component: 'HomePage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'Selected For Interview', pageName: 'JobEntryPage', component: 'JobEntryPage', tabComponent: 'JobEntryPage', index: 1, icon: 'contacts' },
   
-    { title: 'Closed', pageName: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 2, icon: 'contacts' },
-    { title: 'Application Stats', pageName: 'LogoutPage',  icon: 'home'},
-    
-    { title: 'Logout', pageName: 'LogoutPage',  icon: 'home'}
+    { title: 'Closed', pageName: 'ClosedAppsPage', component: 'ClosedAppsPage', tabComponent: 'ClosedAppsPage', index: 2, icon: 'close' },
+
     
   ];
+
+  accountPages: PageInterface[] = [
+    { title: 'Profile', pageName: 'ProfilePage', component: 'ProfilePage', icon: 'person' },
+
+    { title: 'Statistics', pageName: 'StatisticsPage', component: 'StatisticsPage', tabComponent: 'StatistcsPage', index: 2, icon: 'stats'},
+   
+    { title: 'Logout', pageName: 'LogoutPage', component: 'LogoutPage', icon: 'log-out'}
+
+
+    
+  ];
+
 
 
 
@@ -60,18 +72,6 @@ export class MyApp {
 
     this.initializeApp();
 
-    /*
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Job Entry', component: JobEntryPage },
-      { title: 'In Interviews', component: SelectedPage },
-      
-      { title: 'Closed Applications', component: ClosedAppsPage },
-      { title: 'Profile', component: ProfilePage},
-      { title: 'Logout', component: LogoutPage}
-    ];
-    */
   }
 
   initializeApp() {
@@ -95,12 +95,15 @@ export class MyApp {
     }
     
     // The active child nav is our Tabs Navigation
-    if (this.nav.getActiveChildNavs() && page.index != undefined) {
+    if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
     } else {
       // Tabs are not active, so reset the root page 
       // In this case: moving to or from SpecialPage
-      this.nav.setRoot(page.pageName, params);
+      console.log(page.pageName);
+      this.nav.setRoot(page.pageName).catch((err: any) => {
+        console.log(`Didn't set nav root: ${err}`);
+  });
     }
   }
  

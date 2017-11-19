@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ClosedAppsPage } from './../closed-apps/closed-apps';
 import { HomePage } from './../home/home';
-import { SelectedPage } from './../selected/selected';
 /**
  * Generated class for the TabsPage page.
  *
