@@ -10,7 +10,7 @@
   <ion-content>
 
     <ion-list>
-      <ion-list-header>Applications</ion-list-header> 
+      <ion-list-header>General</ion-list-header> 
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
           <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
         {{p.title}}
@@ -18,6 +18,14 @@
     </ion-list>
 
     <ion-list>
+        <ion-list-header>Social</ion-list-header> 
+        <button menuClose ion-item *ngFor="let p of socialPages" (click)="openPage(p)">
+            <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>
+          {{p.title}}
+        </button>
+      </ion-list>
+
+      <ion-list>
         <ion-list-header>Account</ion-list-header> 
         <button menuClose ion-item *ngFor="let p of accountPages" (click)="openPage(p)">
             <ion-icon item-start [name]="p.icon" [color]="isActive(p)"></ion-icon>

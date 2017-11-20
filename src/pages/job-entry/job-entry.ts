@@ -11,7 +11,6 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-job-entry',
   templateUrl: 'job-entry.html',

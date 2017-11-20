@@ -7,7 +7,6 @@ import { FirebaseListObservable, FirebaseObjectObservable, AngularFireDatabase }
 import { Observable } from 'rxjs/Observable'
 import firebase from 'firebase';
 
-@IonicPage()
 
 
 @Component({

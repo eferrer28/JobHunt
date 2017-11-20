@@ -8,6 +8,7 @@ import { Chart } from 'chart.js';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+@IonicPage()
 
 @Component({
   selector: 'page-statistics',

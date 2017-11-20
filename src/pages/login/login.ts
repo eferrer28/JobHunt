@@ -10,7 +10,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
  * on Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -40,7 +39,7 @@ export class LoginPage {
     this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password)
     .then(auth => {
       //per side menu and tabs navigation
-      //this.navCtrl.setRoot('MenuPage');
+      this.navCtrl.setRoot('TabsPage');
       //this.navCtrl.setRoot(MenuPage);
       
       // Do custom things with auth

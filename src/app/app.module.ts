@@ -1,4 +1,4 @@
-import { StatisticsPage } from './../pages/statistics/statistics';
+import { HomePage } from './../pages/home/home';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,8 +17,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts';
-
-
 
 import { ReactiveFormsModule } from '@angular/forms'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -50,7 +48,7 @@ import { DerpPipe } from './/../pipes/derp/derp'
     GhostedModalPage,
     RejectionModalPage,  
     DetailedInterviewPage,
-    StatisticsPage
+    HomePage
 
 
   ],
@@ -75,7 +73,7 @@ import { DerpPipe } from './/../pipes/derp/derp'
     GhostedModalPage,
     RejectionModalPage,
     DetailedInterviewPage,
-    StatisticsPage,
+    HomePage
 
 
   ],
