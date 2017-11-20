@@ -6,9 +6,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { JobEntryPage } from '../pages/job-entry/job-entry';
-import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from './../pages/profile/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -34,9 +32,9 @@ export class MyApp {
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
  
-  //rootPage: any ='HomePage';
-  rootPage: any;
-  
+  //rootPage = 'TabPage';
+  //rootPage: any;
+  rootPage:any = 'HomePage';
   
  
   pages: PageInterface[] = [
@@ -82,7 +80,7 @@ export class MyApp {
     //from tutorial https://aaronczichon.de/2017/03/07/ionic-firebase-authentication/
     this.afAuth.authState.subscribe(auth => {
       if(!auth)
-        this.rootPage = LoginPage;
+        this.rootPage = 'LoginPage';
       else
         this.rootPage = 'TabsPage';
     });

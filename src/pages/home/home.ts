@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable'
 import firebase from 'firebase';
 
 
-
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

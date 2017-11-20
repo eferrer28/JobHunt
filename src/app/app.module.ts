@@ -1,4 +1,3 @@
-import { HomePage } from './../pages/home/home';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,8 +5,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { JobEntryPage } from '../pages/job-entry/job-entry';
-import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { JobstatusPage } from './../pages/jobstatus/jobstatus'
 import { GhostedModalPage } from './../pages/ghosted-modal/ghosted-modal';
@@ -40,15 +37,12 @@ import { DerpPipe } from './/../pipes/derp/derp'
 @NgModule({
   declarations: [
     MyApp,
-    JobEntryPage,
-    LoginPage,
     RegisterPage,
     JobstatusPage,
     DerpPipe,
     GhostedModalPage,
     RejectionModalPage,  
     DetailedInterviewPage,
-    HomePage
 
 
   ],
@@ -66,14 +60,12 @@ import { DerpPipe } from './/../pipes/derp/derp'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    JobEntryPage,
-    LoginPage,
+
     RegisterPage,
     JobstatusPage,
     GhostedModalPage,
     RejectionModalPage,
     DetailedInterviewPage,
-    HomePage
 
 
   ],
@@ -88,20 +80,3 @@ import { DerpPipe } from './/../pipes/derp/derp'
 export class AppModule {}
 
 
-/*
-
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { MenuPage } from './menu';
-
-@NgModule({
-  declarations: [
-    MenuPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(MenuPage),
-  ],
-})
-export class MenuPageModule {}
-
-*/
