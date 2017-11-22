@@ -22,6 +22,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
 import { CreateEntryProvider } from '../providers/create-entry/create-entry';
 
 import { DerpPipe } from './/../pipes/derp/derp'
+import { CompaniesProvider } from '../providers/companies/companies';
 
   // Initialize Firebase
   var config = {
@@ -74,7 +75,8 @@ import { DerpPipe } from './/../pipes/derp/derp'
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider,
-    CreateEntryProvider
+    CreateEntryProvider,
+    CompaniesProvider
   ]
 })
 export class AppModule {}
