@@ -1,5 +1,4 @@
 import { FirebaseProvider } from './../../providers/firebase/firebase';
-import { HomePage } from './../home/home';
 import { CreateEntryProvider } from './../../providers/create-entry/create-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -53,7 +52,7 @@ export class JobEntryPage {
         
       newEvent => {
         //this.navCtrl.pop();
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot('HomePage');
 
       });
     }

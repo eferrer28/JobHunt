@@ -1,7 +1,5 @@
-import { JobEntryPage } from './../job-entry/job-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from './../home/home';
 /**
  * Generated class for the TabsPage page.
  *
@@ -16,8 +14,8 @@ import { HomePage } from './../home/home';
 })
 export class TabsPage{
 // set the root pages for each tab
-tab1Root: any = HomePage;
-tab2Root: any = JobEntryPage;
+tab1Root: any = 'HomePage';
+tab2Root: any = 'JobEntryPage';
 tab3Root: any = 'StatisticsPage';
 //tab4Root: any = AboutPage;
 mySelectedIndex: number;
@@ -28,6 +26,11 @@ constructor(navParams: NavParams) {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
+  }
+
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnterTabsPage');
   }
 
 }

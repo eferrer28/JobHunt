@@ -32,16 +32,16 @@ export class MyApp {
   // Reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
  
-  //rootPage = 'TabPage';
+  //rootPage = 'TabsPage';
   //rootPage: any;
-  rootPage:any = 'HomePage';
+  rootPage:any = 'TabsPage';
   
  
   pages: PageInterface[] = [
-    { title: 'Applications', pageName: 'HomePage',  index: 0, icon: 'home' },
-    { title: 'New Entries ', pageName: 'JobEntryPage',  index: 1, icon: 'map' },
+    { title: 'Applications', pageName: 'HomePage', component: 'TabsPage', tabComponent: 'HomePage', index: 0, icon: 'home' },
+    { title: 'New Entries ', pageName: 'JobEntryPage', component: 'TabsPage', tabComponent: 'JobEntryPage', index: 1, icon: 'map' },
 
-    { title: 'Statistics', pageName: 'StatisticsPage', index: 2, icon: 'stats'},
+    { title: 'Statistics', pageName: 'StatisticsPage', component: 'TabsPage', tabComponent: 'StatistcsEntryPage',  index: 2, icon: 'stats'},
     
   ];
 
@@ -63,11 +63,6 @@ export class MyApp {
 
     
   ];
-
-
-
-
-
 
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
@@ -104,11 +99,12 @@ export class MyApp {
   openPage(page: PageInterface) {
     console.log("la tee dah");
     let params = {};
-    
+    console.log(page.index);
         // the nav component was found using @ViewChild(Nav)
         // setRoot on the nav to remove previous pages and only have this page
         // we wouldn't want the back button to show in this scenario
         if (page.index) {
+          console.log("SHOULD BE HERE");
           params = { tabIndex: page.index };
         }
     
@@ -116,15 +112,28 @@ export class MyApp {
         // don't setRoot again, this maintains the history stack of the
         // tabs even if changing them from the menu
         if (this.nav.getActiveChildNavs().length && page.index != undefined) {
+          console.log("Does this ever trigger?")
           this.nav.getActiveChildNavs()[0].select(page.index);
           // Set the root of the nav with params if it's a tab index
         } else {
-          console.log(page.pageName)
-          this.nav.setRoot(page.pageName, params).catch((err: any) => {
-            console.log(`Didn't set nav root: ${err}`);
-          });
+
+          if(page.component == 'HomePage')
+          {
+            console.log("SHIT")
+            this.nav.setRoot(page.tabComponent, params)
+          }
+          else{
+            console.log("ZOMG HERE");
+            console.log(params);
+            console.log(page.pageName)
+            
+            this.nav.setRoot(page.component, params).catch((err: any) => {
+              console.log(`Didn't set nav root: ${err}`);
+          })
+
   }
 }
+  }
  
 
   isActive(page: PageInterface) {
