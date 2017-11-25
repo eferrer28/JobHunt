@@ -72,6 +72,15 @@ export class FirebaseProvider {
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key);
     
   }
+  getCompanyList() {
+    //console.log("lololol");
+    //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
+    return this.afd.list('/userProfile/' + this.user.uid + '/applications/', {
+      query: {
+        orderByChild: 'company',
+      }
+    });
+}
 
   getHomePage() {
         //console.log("lololol");

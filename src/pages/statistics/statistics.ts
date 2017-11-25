@@ -2,6 +2,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Chart } from 'chart.js';
+
 /**
  * Generated class for the StatisticsPage page.
  *
@@ -56,8 +57,6 @@ export class StatisticsPage {
 
 
     console.log('ionViewDidEnter JobstatusPage');
-
-    
 
     this.fb.getStats().subscribe(data => {
       console.log(data);
@@ -126,8 +125,7 @@ export class StatisticsPage {
                                "#36A2EB",
                                "#FFCE56",
                                "#FF6384",
-  
-                           ]
+                             ]
                        }]
                    }
         
@@ -144,10 +142,6 @@ export class StatisticsPage {
     
 
   }
-
-
-    
-
 
 
 }
