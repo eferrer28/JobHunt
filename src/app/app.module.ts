@@ -1,3 +1,4 @@
+import { CompaniesPipe } from './../pipes/companies/companies';
 
 import { DetailedInterviewPage } from './../pages/detailed-interview/detailed-interview';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,6 +45,7 @@ import { CompaniesProvider } from '../providers/companies/companies';
     GhostedModalPage,
     RejectionModalPage,  
     DetailedInterviewPage,
+    CompaniesPipe
 
 
   ],

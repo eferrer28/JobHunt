@@ -32,7 +32,7 @@ export class CompaniesProvider {
     opt = new RequestOptions({
     headers: myHeaders
     })
-    return this.http.get(`http://api.glassdoor.com/api/api.htm?v=1&t.p=230193&t.k=fsjurF2o0B5&userip=0.0.0.0&useragent=` + this.userAgent + `&format=json&action=employers&q=` + data, opt).map(res => res.json())
+    return this.http.get(`http://api.glassdoor.com/api/api.htm?v=1&t.p=230193&t.k=fsjurF2o0B5&userip=0.0.0.0&useragent=` + this.userAgent + `&format=json&action=employers&q=` + data, opt).map(res => res.json().response.employers)
     
   }
 
