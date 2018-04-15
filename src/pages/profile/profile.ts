@@ -33,7 +33,9 @@ export class ProfilePage {
     public alertCtrl: AlertController, public fb: FirebaseProvider, public afd: AngularFireDatabase) {
     this.nameForm = formBuilder.group({
     fname: ['', null],
-    lname: ['', null]
+    lname: ['', null],
+    email: ['', null]
+
     });
 
     this.item = this.afd.object('/userProfile/');
@@ -47,9 +49,10 @@ export class ProfilePage {
           let value = data.firstName
           let value1 = data.lastName; 
           let value2 = data.dob;
+          let value3 = data.email;
           this.nameForm.patchValue({fname: value});
           this.nameForm.patchValue({lname: value1});
-          
+          this.nameForm.patchValue({email: value3});
           
         }, err => {
           console.log('some err: ', err);
@@ -62,7 +65,7 @@ export class ProfilePage {
  updateUser(post){
    console.log(post.fname);
    console.log(post.lname);
-   this.fb.updateDetails(post.fname, post.lname);
+   this.fb.updateDetails(post.fname, post.lname, post.email);
  }
 
 

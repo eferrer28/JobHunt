@@ -30,10 +30,6 @@ export class HomePage {
     console.log(this.navParams.get('page'));    
   }
 
-
-
-
-
   ionViewDidLoad() {
     this.fb.authState.subscribe(user => {
       if (user) {
@@ -81,6 +77,10 @@ export class HomePage {
     
     this.navCtrl.push(DetailedInterviewPage, {param: key, param2: entries});
     
+  }
+
+  removeItem(id) {
+    this.fb.removeItem(id);
   }
 
   }

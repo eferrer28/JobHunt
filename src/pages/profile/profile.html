@@ -34,6 +34,13 @@
         </ion-input>
       </ion-item>
 
+      <ion-item padding>
+        <ion-label floating>Email Address</ion-label>
+        <ion-input formControlName="email" type="text"
+          [class.invalid]="!nameForm.controls.email.valid && nameForm.controls.email.dirty">
+        </ion-input>
+      </ion-item>
+
       <ion-item class="error-message" 
         *ngIf="!nameForm.controls.lname.valid && nameForm.controls.lname.dirty" no-lines>
         <p>Please provide a last name</p>

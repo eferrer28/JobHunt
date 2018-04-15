@@ -13,6 +13,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'tabs.html',
 })
 export class TabsPage{
+  
 // set the root pages for each tab
 tab1Root: any = 'HomePage';
 tab2Root: any = 'JobEntryPage';

@@ -7,7 +7,6 @@ import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 
 
-
 @Injectable()
 export class FirebaseProvider {
 
@@ -46,8 +45,8 @@ export class FirebaseProvider {
         
   }
 
-  updateDetails(first, second) {
-    return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second} );
+  updateDetails(first, second, third) {
+    return this.afd.object('/userProfile/' + this.user.uid).update({firstName: first, lastName: second, email: third} );
   }
 
   createNewEntry(companyEntry, positionEntry, dateEntry, statusEntry){
@@ -114,7 +113,6 @@ export class FirebaseProvider {
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({dateRejected: ghostedDate, 
     notes: ghostedNotes, status: 'ghosted', closed: "true"} );
     
-
   } 
   
   addInterview(key, type, date, notes){
@@ -157,6 +155,10 @@ export class FirebaseProvider {
 
       }
     });
-    
   }
+  
+  
+    removeItem(key) {
+      return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).remove();
+}
 }

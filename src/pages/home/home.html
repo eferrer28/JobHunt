@@ -29,6 +29,7 @@
   <div [ngSwitch]="applications">
 
       <ion-list *ngSwitchCase="'open'">
+        
           
   <ion-grid >
     <ion-row>
@@ -36,8 +37,14 @@
         <ion-title>Company Name</ion-title>
         
       <ion-list *ngFor="let item of items | async">
+          <ion-item-sliding>
+
       <ion-item>{{item.company}}</ion-item>
-      
+      <ion-item-options side="right">
+          <button ion-button color="danger" icon-only (click)="removeItem(item.$key)"><ion-icon name="trash"></ion-icon></button>
+        </ion-item-options>
+          </ion-item-sliding>
+
     </ion-list>
     </ion-col>
 
@@ -66,6 +73,7 @@
         <ion-title>Company Name</ion-title>
         
       <ion-list *ngFor="let item of selectedEntries | async">
+        
       <ion-item>{{item.company}}</ion-item>
       
     </ion-list>
@@ -118,3 +126,4 @@
 </div>
 
 </ion-content>
+
