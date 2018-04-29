@@ -2,7 +2,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import firebase from 'firebase';
 
@@ -36,8 +36,9 @@ export class RegisterPage {
     private loadingCtrl: LoadingController) {
 
     this.signupForm = fb.group({
-      email: '',
-      password: '',
+      email: ['', Validators.email],
+      password: ['' , [Validators.required, Validators.minLength(6)]]
+      ,
       passwordRetyped: ''
     });
 

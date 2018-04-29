@@ -32,9 +32,10 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,
     public alertCtrl: AlertController, public fb: FirebaseProvider, public afd: AngularFireDatabase) {
     this.nameForm = formBuilder.group({
-    fname: ['', null],
-    lname: ['', null],
+    fname: ['', [Validators.required,  Validators.minLength(2),Validators.maxLength(20)]],
+    lname: ['', [Validators.required,  Validators.minLength(2),Validators.maxLength(20)]],
     email: ['', null]
+
 
     });
 
@@ -66,6 +67,8 @@ export class ProfilePage {
    console.log(post.fname);
    console.log(post.lname);
    this.fb.updateDetails(post.fname, post.lname, post.email);
+   this.navCtrl.setRoot('HomePage');
+
  }
 
 

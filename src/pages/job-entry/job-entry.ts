@@ -2,7 +2,7 @@ import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { CreateEntryProvider } from './../../providers/create-entry/create-entry';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 /**
  * Generated class for the JobEntryPage page.
  *
@@ -29,8 +29,10 @@ export class JobEntryPage {
             private fb: FormBuilder, public entryProvider: CreateEntryProvider,
             public firebaseProvider: FirebaseProvider  ) {
     this.user = this.fb.group({
-      company: [null],
-      position: [null],
+
+      company: [null, [Validators.required,  Validators.minLength(5),Validators.maxLength(30
+      )]],
+      position: [null, [Validators.required,  Validators.minLength(5),Validators.maxLength(16)]],
       date: ['']
     });
   }

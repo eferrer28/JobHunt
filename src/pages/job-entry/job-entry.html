@@ -25,6 +25,10 @@
     <ion-label stacked>Company Name</ion-label>
     <ion-input type="text" formControlName="company"></ion-input>
   </ion-item>
+  <ion-item *ngIf="user.controls.company.invalid">
+    <p>Please provide a valid length.</p>
+  </ion-item>
+
   <ion-item>
     <ion-label stacked>Position Applied For</ion-label>
     <ion-input type="text" formControlName="position"></ion-input>
@@ -38,6 +42,6 @@
 
 </ion-list>
 
-<button ion-button type="submit">Submit</button>
+<button ion-button type="submit" [disabled]="user.invalid">Submit</button>
 </form>
 </ion-content>
