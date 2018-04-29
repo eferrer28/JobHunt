@@ -35,7 +35,8 @@
   </ion-item>
   <ion-item>
     <ion-label stacked>Date Applied</ion-label>
-    <ion-datetime formControlName="date" min="2017" displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY"></ion-datetime>
+    <ion-datetime       [(ngModel)]="startDate"
+    formControlName="date" min="2017" displayFormat="MM DD YYYY" pickerFormat="MM DD YYYY"></ion-datetime>
   </ion-item>
 
 

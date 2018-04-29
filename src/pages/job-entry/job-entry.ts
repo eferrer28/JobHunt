@@ -24,6 +24,8 @@ export class JobEntryPage {
   //pending: boolean = true;
   status: string = '';
   pending: string;
+  startDate = new Date().toISOString();
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
             private fb: FormBuilder, public entryProvider: CreateEntryProvider,
