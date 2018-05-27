@@ -16,7 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CompanyDetailsPage {
 
-  companyData = [];
+  companyData = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cp: CompaniesProvider,
     public fb: FirebaseProvider) {
@@ -26,21 +26,19 @@ export class CompanyDetailsPage {
     this.fb.authState.subscribe(user => {
       if (user) {
         //this.entries = this.fb.getUserProfile();
-        
-        this.cp.getJobData(this.navParams.get('data')).subscribe(
-          data => {this.companyData = data
-          console.log(data);
-          console.log(JSON.stringify(this.companyData));
-          //this.navCtrl.push('CompanyDetailsPage', data);
-        }
-        )
+         this.companyData = this.navParams.get('data');
+         console.log(this.companyData);
 
- 
+
+
+        
+        console.log("hi");
 
       } else {
-      }
-
-    });
+        console.log('yikes');
+        }
+    })
+  }
 
 }
-}
+

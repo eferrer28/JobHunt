@@ -51,10 +51,10 @@ export class CompaniesPage {
     //console.log(this.http.get('http://api.glassdoor.com/api/api.htm?v=1&t.p=+++230193&t.k=fsjurF2o0B5&userip=0.0.0.0&useragent=&format=json&action=employers&q=' + data));
     //.map(res => res.json());
     this.cp.getJobData(data).subscribe(
-      data => {this.companyData = data
+      data => {this.companyData = data[0]
       console.log(data);
       console.log(JSON.stringify(this.companyData));
-      this.navCtrl.push('CompanyDetailsPage', data);
+      this.navCtrl.push('CompanyDetailsPage', {'data': this.companyData});
     }
     )
 
