@@ -26,7 +26,6 @@ export class JobEntryPage {
   pending: string;
   startDate = new Date().toISOString();
 
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
             private fb: FormBuilder, public entryProvider: CreateEntryProvider,
             public firebaseProvider: FirebaseProvider  ) {
@@ -34,7 +33,7 @@ export class JobEntryPage {
 
       company: [null, [Validators.required,  Validators.minLength(5),Validators.maxLength(30
       )]],
-      position: [null, [Validators.required,  Validators.minLength(5),Validators.maxLength(16)]],
+      position: [null, [Validators.required,  Validators.minLength(5),Validators.maxLength(30)]],
       date: ['']
     });
   }
@@ -50,7 +49,6 @@ export class JobEntryPage {
 
   newEntry(post): void{
 
-
     //this.entryProvider.createEntry(post.company, post.position, post.date, "pending").then(
       this.firebaseProvider.createNewEntry(post.company, post.position, post.date, "pending").then(
         
@@ -60,11 +58,9 @@ export class JobEntryPage {
 
       });
     }
-  
-
+ 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JobEntryPage');
   }
-
 }
 

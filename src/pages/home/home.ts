@@ -33,8 +33,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.fb.authState.subscribe(user => {
       if (user) {
-        //this.entries = this.fb.getUserProfile();
-        
+        //this.entries = this.fb.getUserProfile();     
         this.items = this.fb.getHomePage();
         console.log("hi");
         console.log(this.items);
@@ -53,18 +52,15 @@ export class HomePage {
     console.log("HEY");
     //console.log(info);
     console.log(key);
-    console.log(entries);
-    
+    console.log(entries);   
     this.navCtrl.push(JobstatusPage, {param: key, param2: entries});
     
   }
 
   moreSelectedDetails(key, entries){
     console.log("HEY");
-    //console.log(info);
     console.log(key);
-    console.log(entries);
-    
+    console.log(entries);  
     this.navCtrl.push(DetailedInterviewPage, {param: key, param2: entries});
     
   }

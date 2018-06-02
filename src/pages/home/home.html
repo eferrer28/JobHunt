@@ -52,6 +52,7 @@
     <ion-col>
         <ion-title>Status</ion-title>
         <ion-list *ngFor="let item of items | async">
+        <!--CLicking this Takes us to the job status page -->
             <ion-item (click)="moreDetails(item.$key, items)">
             
             {{item.status}}
@@ -69,13 +70,12 @@
 
 <ion-grid *ngSwitchCase="'pending'">
     <ion-row>
+
+
     <ion-col >
-        <ion-title>Company Name</ion-title>
-        
-      <ion-list *ngFor="let item of selectedEntries | async">
-        
-      <ion-item>{{item.company}}</ion-item>
-      
+        <ion-title>Company Name</ion-title>       
+      <ion-list *ngFor="let item of selectedEntries | async">        
+      <ion-item>{{item.company}}</ion-item>    
     </ion-list>
     </ion-col>
 
@@ -83,18 +83,16 @@
     <ion-col>
         <ion-title>Status</ion-title>
         <ion-list *ngFor="let item of selectedEntries | async">
-            <ion-item (click)="moreSelectedDetails(item.$key, selectedEntries)">
-            
+            <ion-item (click)="moreSelectedDetails(item.$key, selectedEntries)">           
             {{item.status}}
           </ion-item>
-          </ion-list>
-            
+          </ion-list>           
       </ion-col>
-    
-</ion-row>
-
-
+     
+  </ion-row>
 </ion-grid>
+
+
 
 <ion-grid *ngSwitchCase="'closed'">
     <ion-row>
@@ -111,8 +109,7 @@
     <ion-col>
         <ion-title>Status</ion-title>
         <ion-list *ngFor="let item of closedEntries | async">
-            <ion-item (click)="moreSelectedDetails(item.$key, closedEntries)">
-            
+            <ion-item (click)="moreSelectedDetails(item.$key, closedEntries)">           
             {{item.status}}
           </ion-item>
           </ion-list>

@@ -8,7 +8,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-jobstatus',
@@ -48,7 +47,6 @@ export class JobstatusPage {
     this.FirebaseProvider.authState.subscribe(user => {
       if (user) {
 
-
     console.log('ionViewDidLoad JobstatusPage');
     this.id = this.navParams.get('param')
     console.log(this.id);
@@ -62,8 +60,7 @@ export class JobstatusPage {
       let value2 = data.date;
       this.jobstatusForm.patchValue({company: value});
       this.jobstatusForm.patchValue({position: value1});
-      this.jobstatusForm.patchValue({date: value2});
-      
+      this.jobstatusForm.patchValue({date: value2})      
       
     }, err => {
       console.log('some err: ', err);
@@ -79,8 +76,7 @@ export class JobstatusPage {
     console.log('new state:' + this.isChecked)
   }
 
-  
-
+ 
   rejected(){
     let rejectionModal = this.modalCtrl.create(RejectionModalPage, {key: this.id});
     rejectionModal.present();
@@ -127,8 +123,9 @@ export class JobstatusPage {
     });
     toast.present();
   }
-
+  //did i forget to add rounds?
   updateInterview(data){
+    console.log(data);
     this.FirebaseProvider.addInterview(this.id, data.interviewType, data.interviewDate, data.notes);
     
   }
