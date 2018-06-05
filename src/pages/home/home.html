@@ -9,28 +9,43 @@
   </ion-navbar>
 
   <ion-toolbar>
-      <ion-segment [(ngModel)]="applications" color="[primary]">
-          <ion-segment-button value="open">
-            Open
-          </ion-segment-button>
-          <ion-segment-button value="pending">
-              Pending
-            </ion-segment-button>
-            <ion-segment-button value="closed">
-                Closed
-              </ion-segment-button>  
-        </ion-segment>
-      
+
+  <ion-row> 
+  <ion-col col-10>
+    <ion-searchbar  class="search" placeholder="Allo">
+
+  </ion-searchbar>
+    </ion-col>
+  <ion-col col-2>
+<ion-select interface="popover" [(ngModel)]="status">
+        <ion-option selected>
+            All
+        </ion-option>
+        <ion-option>
+            Awaiting Reply
+        </ion-option>
+                <ion-option>
+            In Progress
+        </ion-option>
+                <ion-option>
+            Closed
+        </ion-option>
+    </ion-select>
+
+    </ion-col>
+
+
+
+</ion-row>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <div [ngSwitch]="applications">
+  <div >
 
-      <ion-list *ngSwitchCase="'open'">
-        
-          
+                
   <ion-grid >
     <ion-row>
     <ion-col >
@@ -64,65 +79,7 @@
 
 
 </ion-grid>
-</ion-list>
 
-
-<ion-grid *ngSwitchCase="'pending'">
-    <ion-row>
-    <ion-col >
-        <ion-title>Company Name</ion-title>
-        
-      <ion-list *ngFor="let item of selectedEntries | async">
-        
-      <ion-item>{{item.company}}</ion-item>
-      
-    </ion-list>
-    </ion-col>
-
-
-    <ion-col>
-        <ion-title>Status</ion-title>
-        <ion-list *ngFor="let item of selectedEntries | async">
-            <ion-item (click)="moreSelectedDetails(item.$key, selectedEntries)">
-            
-            {{item.status}}
-          </ion-item>
-          </ion-list>
-            
-      </ion-col>
-    
-</ion-row>
-
-
-</ion-grid>
-
-<ion-grid *ngSwitchCase="'closed'">
-    <ion-row>
-    <ion-col >
-        <ion-title>Company Name</ion-title>
-        
-      <ion-list *ngFor="let item of closedEntries | async">
-      <ion-item>{{item.company}}</ion-item>
-      
-    </ion-list>
-    </ion-col>
-
-
-    <ion-col>
-        <ion-title>Status</ion-title>
-        <ion-list *ngFor="let item of closedEntries | async">
-            <ion-item (click)="moreSelectedDetails(item.$key, closedEntries)">
-            
-            {{item.status}}
-          </ion-item>
-          </ion-list>
-            
-      </ion-col>
-    
-</ion-row>
-
-
-</ion-grid>
 </div>
 
 </ion-content>

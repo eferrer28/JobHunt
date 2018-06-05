@@ -81,16 +81,7 @@ export class FirebaseProvider {
     });
 }
 
-  getHomePage() {
-        //console.log("lololol");
-        //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
-        return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
-          query: {
-            orderByChild: 'status',
-            equalTo: 'pending'
-      }
-    });
-  }
+
 
   getStats(){
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
@@ -127,6 +118,12 @@ export class FirebaseProvider {
 
   updateInterviewStatus(key){
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({ status: 'selected'} );
+  }
+
+    getHomePage() {
+        //console.log("lololol");
+        //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
+        return this.afd.list('/userProfile/' + this.user.uid + '/applications/');
   }
 
   //add new name after this.user.uid... something like /entries/
