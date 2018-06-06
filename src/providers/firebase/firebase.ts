@@ -120,10 +120,21 @@ export class FirebaseProvider {
     return this.afd.object('/userProfile/' + this.user.uid + '/applications/' + '/' + key).update({ status: 'selected'} );
   }
 
-    getHomePage() {
+  getHomePage() {
         //console.log("lololol");
         //return this.afd.object('/userProfile/' + this.user.uid + '/applications/');
         return this.afd.list('/userProfile/' + this.user.uid + '/applications/');
+  }
+
+    getPendingApps(){
+    console.log(this.user.uid);
+    return this.afd.list('/userProfile/' + this.user.uid + '/applications/',  {
+      query: {
+        orderByChild: 'status',
+        equalTo: 'pending'
+      }
+    });
+    
   }
 
   //add new name after this.user.uid... something like /entries/
