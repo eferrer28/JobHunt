@@ -17,7 +17,9 @@ import firebase from 'firebase';
 })
 export class HomePage {
 
-  items: Observable<any[]>;
+  //items: Observable<any[]>;
+    items: Observable<any[]>;
+    items1;
   entries:[ Array<any>];
   item: FirebaseObjectObservable<any>;
   user: firebase.User;
@@ -25,7 +27,9 @@ export class HomePage {
 
   selectedEntries: Observable<any[]>;
   closedEntries: Observable<any[]>;
-  applications: string = 'open';
+  applications: any;
+
+  
   
   
 
@@ -49,11 +53,38 @@ export class HomePage {
       } else {
         this.items = null;
       }
-    })
-  }
+    });
+   }
+
+   pend(val){
+     console.log(val);
+
+     if(val == "pending"){
+       this.items = this.fb.getPendingApps();
+
+     }
+     else if(val == "selected"){
+       this.items = this.fb.getSelectedApps();
+     }
+      else if(val == "closed"){
+       this.items = this.fb.getClosedApps();
+     }
+      else if(val == "all"){
+       this.items = this.fb.getHomePage();
+     }
 
 
 
+   }
+
+   pending1(){
+     console.log("Hit pending")
+      this.fb.getPendingApps().subscribe( data => this.items1 = data);
+      console.log(this.items1);
+      console.log(JSON.stringify(this.items1));
+    
+
+   }
 
   moreDetails(key, entries){
     console.log("HEY");
